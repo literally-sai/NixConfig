@@ -1,16 +1,30 @@
-set default-bg "#121114" # Background color
-set default-fg "#FF0000"
+# Basic settings
+set recolor true
+set recolor-keephue true
 
-map <C-=> zoom in
-map <C-+> zoom in
-map <C--> zoom out
-map <C-_> zoom out
+# Colors
+set default-bg "#212733"
+set default-fg "#d9d7ce"
 
-set adjust-open "best-fit"
-set scroll-step 100
-set zoom-min 10
-set recolor "true"
-set recolor-lightcolor "#121114"
-set recolor-darkcolor "#CDD6F4"
-set guioptions c
+set recolor-lightcolor "#212733"
+set recolor-darkcolor "#d9d7ce"
 
+set inputbar-bg "#191e2a"
+set inputbar-fg "#d9d7ce"
+
+set statusbar-bg "#191e2a"
+set statusbar-fg "#d9d7ce"
+
+set notification-bg "#191e2a"
+set notification-fg "#d9d7ce"
+
+set highlight-color "#343f4c"
+set highlight-active-color "#ffcc66"
+
+set completion-bg "#191e2a"
+set completion-fg "#d9d7ce"
+set completion-highlight-bg "#343f4c"
+set completion-highlight-fg "#d9d7ce"
+
+# Set the opacity to match kitty (if supported by your version of zathura)
+set window-opacity 0.60
