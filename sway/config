@@ -1,0 +1,73 @@
+set $mod Mod4
+
+font BlexMono Nerd Font 12
+
+output * bg ~/.config/sway/wallpaper.jpg fill
+
+bindsym $mod+q exec kitty
+bindsym $mod+e exec firefox
+bindsym $mod+w exec kitty nvim
+bindsym $mod+r exec zathura
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace 1, workspace 1
+bindsym $mod+Shift+2 move container to workspace 2, workspace 2
+bindsym $mod+Shift+3 move container to workspace 3, workspace 3
+bindsym $mod+Shift+4 move container to workspace 4, workspace 4
+bindsym $mod+Shift+5 move container to workspace 5, workspace 5
+bindsym $mod+Shift+6 move container to workspace 6, workspace 6
+bindsym $mod+Shift+7 move container to workspace 7, workspace 7
+bindsym $mod+Shift+8 move container to workspace 8, workspace 8
+bindsym $mod+Shift+9 move container to workspace 9, workspace 9
+bindsym $mod+Shift+0 move container to workspace 10, workspace 10
+
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+k focus up
+bindsym $mod+j focus down
+
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+j move down
+
+bindsym $mod+f fullscreen
+
+bindsym $mod+minus exec pactl set-sink-volume @DEFAULT_SINK@ -20%
+bindsym $mod+equal exec pactl set-sink-volume @DEFAULT_SINK@ +20%
+
+bindsym $mod+b exec blueman-manager
+bindsym $mod+v exec nm-connection-editor
+
+bindsym $mod+s exec sh -c 'mkdir -p ~/Downloads/ss && grim ~/Downloads/ss/$(date +%Y%m%d-%H%M%S).png'
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exit
+
+bindsym $mod+c kill
+
+bindsym $mod+m exec systemctl suspend
+bindsym $mod+Shift+m exec systemctl poweroff
+bindsym $mod+Alt+m exec sway exit
+
+client.focused #5e3738 #5e3738 #ffffff #5e3738
+
+default_border none
+default_floating_border none
+titlebar_padding 4
+titlebar_border_thickness 0
+
+gaps outer 7
+gaps inner 7
