@@ -42,6 +42,11 @@ bindsym $mod+Shift+l move right
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+j move down
 
+bindsym $mod+Alt+h resize shrink width 10px
+bindsym $mod+Alt+l resize grow width 10px
+bindsym $mod+Alt+k resize shrink height 10px
+bindsym $mod+Alt+j resize grow height 10px
+
 bindsym $mod+f fullscreen
 
 bindsym $mod+minus exec pactl set-sink-volume @DEFAULT_SINK@ -20%
@@ -51,6 +56,10 @@ bindsym $mod+b exec blueman-manager
 bindsym $mod+v exec nm-connection-editor
 
 bindsym $mod+s exec sh -c 'mkdir -p ~/Downloads/ss && grim ~/Downloads/ss/$(date +%Y%m%d-%H%M%S).png'
+bindsym $mod+Shift+s exec sh -c 'mkdir -p ~/Downloads/ss && grim -g "$(slurp)" ~/Downloads/ss/$(date +%Y%m%d-%H%M%S).png'
+bindsym $mod+Shift+R exec wf-recorder -f ~/Videos/screen-$(date +'%Y-%m-%d_%H-%M-%S').mp4
+bindsym $mod+Alt+S exec pkill wf-recorder
+
 bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+Shift+c reload
@@ -61,6 +70,9 @@ bindsym $mod+c kill
 bindsym $mod+m exec systemctl suspend
 bindsym $mod+Shift+m exec systemctl poweroff
 bindsym $mod+Alt+m exec sway exit
+
+output DP-2 pos 0 0
+output HDMI-A-1 pos 1920 0
 
 client.focused #5e3738 #5e3738 #ffffff #5e3738
 
