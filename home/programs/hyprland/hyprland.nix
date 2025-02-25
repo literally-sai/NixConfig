@@ -1,7 +1,7 @@
 { config, lib, pkgs, ...}:
 {
   imports = [
-    ./hyperland-environment.nix
+    ./hyprland-environment.nix
   ];
 
   home.packages = with pkgs; [
@@ -55,7 +55,7 @@
       }
 
       blur {
-        enable = true
+        enabled = true
         size = 3
         passes = 1
 
@@ -145,6 +145,12 @@
     bind = $mainMod, J, movefocus, d
     bind = $mainMod, K, movefocus, u
 
+
+    bind = $mainMod SHIFT, H, movewindow, l
+    bind = $mainMod SHIFT, L, movewindow, r
+    bind = $mainMod SHIFT, J, movewindow, d
+    bind = $mainMod SHIFT, K, movewindow, u
+
     bind = $mainMod, 1, workspace, 1
     bind = $mainMod, 2, workspace, 2
     bind = $mainMod, 3, workspace, 3
@@ -170,10 +176,10 @@
     bindm = $mainMod, mouse:272, movewindow
     bindm = $mainMod, mouse:273, resizewindow
 
-    bind = $mainMod, "+", exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%+
-    bind = $mainMod, -, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%-
-    bind = $mainMod, SHIFT, "+", exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 100% 
-    bind = $mainMod, SHIFT, -, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%
+    bind = $mainMod, P, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%+
+    bind = $mainMod, O, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%-
+    bind = $mainMod SHIFT, P, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 100% 
+    bind = $mainMod SHIFT, O, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%
     '';
   };
 }

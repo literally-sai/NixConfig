@@ -10,20 +10,19 @@
           "git"
         ];
       };
-
-      enableAutosuggestions = true;
+      enableAutosuggestions= true;
       enableCompletion = true;
-      enableSyntaxHighlighting = true;
+      enableSyntaxHighlighting= true;
     };
   };
 
   home.file.".zshrc".text = ''
-  export PATH=$HOME/bin:/usr/local/bin:$PATH
+  export PATH="$HOME/bin:/usr/local/bin:$PATH"
   export ZSH="$HOME/oh-my-zsh"
 
   ZSH_THEME="refined"
   REFINED_CHAR_SYMBOL="λ"
 
-  export PATH=$HOME/.config/rofi/scripts:$PATH
+  export PATH="$HOME/.config/rofi/scripts:$PATH"
   '';
 }

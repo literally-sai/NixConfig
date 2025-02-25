@@ -1,7 +1,7 @@
 { config, pkgs, ...}:
 {
-  home.file."/config/kitty/kitty.conf".text = ''
-  shell zsh
+  home.file.".config/kitty/kitty.conf".text = ''
+  shell ${pkgs.zsh}/bin/zsh
 
   confirm_os_window_close 0
   

@@ -1,10 +1,10 @@
-{ config, pkgs, user, ...}:
+{ config, pkgs, user, ... }:
 {
   virtualisation = {
-    docker.enable = true
+    docker.enable = true;
   };
 
-  users.group.docker.members = [ "sai" ];
+  users.groups.docker.members = [ "sai" ];
 
   environment.systemPackages = with pkgs; [
     docker-compose

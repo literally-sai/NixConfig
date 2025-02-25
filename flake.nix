@@ -7,7 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
@@ -22,25 +22,26 @@
       inherit system;
       config.allowUnfree = true;
     };
-    lib = nixpkgs.lib;  # Semicolon here
+    lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      sai = lib.nixosSystem rec {
+      Ghylak = lib.nixosSystem rec {
         inherit system;
         specialArgs = {
           inherit hyprland;
           inherit pkgs-stable;
         };
         modules = [
-          ./nixos/configuration.nix
-          hyprland.nixosModule.default
+          ./configuration.nix
+          hyprland.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.sai = import ./home/home.nix;
+	    home-manager.users.sai = import ./home/home.nix;
             home-manager.extraSpecialArgs = specialArgs;
           }
+	  ./hosts/hosts.nix
         ];
       };
     };
