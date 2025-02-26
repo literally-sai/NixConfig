@@ -29,9 +29,9 @@
       btop
       iotop
       rofi
-      wofi
       grim
       slurp
+      swww
       tree
       unzip
       wl-clipboard
@@ -41,6 +41,7 @@
     ]) ++ (with pkgs-stable; [
       sqlite
       postgresql
+      bluez
     ]);
   };
 

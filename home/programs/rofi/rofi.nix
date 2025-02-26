@@ -21,7 +21,7 @@
   
   /*****----- Global Properties -----*****/
   * {
-      font:                        "JetBrains Mono Nerd Font 10";
+      font:                        "Hermit Nerd Font 10";
       background:                  #231419;
       background-alt:              #2D1E23;
       foreground:                  #FFFFFF;
@@ -60,7 +60,7 @@
   imagebox {
       padding:                     20px;
       background-color:            transparent;
-      background-image:            url("~/.config/rofi/images/rofi.jpg", height);
+      background-image:            url("~/.config/img/rofi.png", height);
       orientation:                 vertical;
       children:                    [ "inputbar", "dummy", "mode-switcher" ];
   }

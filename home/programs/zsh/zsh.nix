@@ -21,7 +21,7 @@
   export ZSH="$HOME/oh-my-zsh"
 
   ZSH_THEME="refined"
-  REFINED_CHAR_SYMBOL="λ"
+  REFINED_CHAR_SYMBOL="->"
 
   export PATH="$HOME/.config/rofi/scripts:$PATH"
   '';

@@ -8,7 +8,7 @@
       };
       style = ''
                * {
-                 font-family: "JetBrainsMono Nerd Font";
+                 font-family: "Hermit Nerd Font";
                  font-size: 12pt;
                  font-weight: bold;
                  border-radius: 8px;

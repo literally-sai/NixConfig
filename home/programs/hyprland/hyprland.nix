@@ -15,15 +15,14 @@
     monitor=,preferred,auto,auto
 
     $terminal = kitty
-    $menu = wofi
+    $menu = rofi
     $notes = obsidian
     $code = nvim
     $browser = firefox
     $file_manager = ranger
     
+    exec-once = swww init && swww img ~/.config/img/wallpaper.jpg
     exec-once = waybar
-    exec-once = swww init & sleep 0.5 && waybar
-
     general {
       gaps_in = 2
       gaps_out = 10
@@ -130,7 +129,7 @@
     bind = $mainMod, F, exec, $browser
     bind = $mainMod, N, exec, $notes
     bind = $mainMod, W, exec, $terminal, $code
-    bind = $mainMod, E, exec, $menu --show drun
+    bind = $mainMod, E, exec, $menu -show drun
     bind = $mainMod, C, killactive,
     bind = $mainMod, E, exec, $file_manager 
     bind = $mainMod, M, exit,
