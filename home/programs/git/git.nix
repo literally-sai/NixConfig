@@ -5,4 +5,8 @@
     userEmail = "173792483+literally-sai@users.noreply.github.com";
     userName = "literally-sai";
   };
+
+  programs.ssh = {
+    enable = true;
+  };
 }

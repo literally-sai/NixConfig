@@ -17,6 +17,7 @@
       vscode
       obsidian
       ranger
+      discord
 
       # Utils
       git
@@ -32,10 +33,12 @@
       grim
       slurp
       swww
+      gcc
       tree
       unzip
       wl-clipboard
       gnumake
+      openssl
       premake5
       pavucontrol
     ]) ++ (with pkgs-stable; [

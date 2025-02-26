@@ -135,7 +135,7 @@
     bind = $mainMod, M, exit,
 
     bind = $mainMod, S, exec, grim -g "$(slurp)" ~/.screenshots/img$(date +"%Y-%m-%d_%H-%M-%S").png
-    bind = $mainMod, P, pseudo
+    bind = $mainMod, N, pseudo
     bind = $mainMod, B, togglesplit,
     bind = $mainMod, V, togglefloating,
 
@@ -149,6 +149,13 @@
     bind = $mainMod SHIFT, L, movewindow, r
     bind = $mainMod SHIFT, J, movewindow, d
     bind = $mainMod SHIFT, K, movewindow, u
+
+    bind = $mainMod ALT, H, resizeactive, 10 0
+    bind = $mainMod ALT, L, resizeactive, -10 0
+    bind = $mainMod ALT, J, resizeactive, 0 -10
+    bind = $mainMod ALT, K, resizeactive, 0 10
+
+
 
     bind = $mainMod, 1, workspace, 1
     bind = $mainMod, 2, workspace, 2
