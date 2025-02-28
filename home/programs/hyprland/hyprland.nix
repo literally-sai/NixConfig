@@ -10,7 +10,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
+    systemd.enable = true;
     extraConfig = ''
     monitor=,preferred,auto,auto
 

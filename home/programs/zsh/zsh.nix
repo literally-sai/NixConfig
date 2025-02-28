@@ -10,9 +10,9 @@
           "git"
         ];
       };
-      enableAutosuggestions= true;
+      autosuggestion.enable = true;
       enableCompletion = true;
-      enableSyntaxHighlighting= true;
+      syntaxHighlighting.enable = true;
     };
   };
 

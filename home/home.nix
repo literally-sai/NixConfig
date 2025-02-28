@@ -13,7 +13,6 @@
       # User Apps
       firefox
       kitty
-      neovim
       vscode
       obsidian
       ranger
@@ -35,6 +34,7 @@
       swww
       gcc
       tree
+      zathura
       unzip
       wl-clipboard
       gnumake

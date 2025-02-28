@@ -7,5 +7,7 @@
     ./kitty/kitty.nix
     ./rofi/rofi.nix
     ./waybar/waybar.nix
+    ./nixvim/nixvim.nix
+    ./zathura/zathura.nix
   ];
 }

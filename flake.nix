@@ -9,9 +9,14 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     hyprland.url = "github:hyprwm/Hyprland";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, hyprland, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixvim, home-manager, hyprland, ... }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -30,6 +35,7 @@
         specialArgs = {
           inherit hyprland;
           inherit pkgs-stable;
+          inherit nixvim;
         };
         modules = [
           ./configuration.nix
@@ -40,6 +46,9 @@
             home-manager.useUserPackages = true;
 	    home-manager.users.sai = import ./home/home.nix;
             home-manager.extraSpecialArgs = specialArgs;
+            home-manager.sharedModules = [
+              nixvim.homeManagerModules.nixvim
+            ];
           }
 	  ./hosts/hosts.nix
         ];
