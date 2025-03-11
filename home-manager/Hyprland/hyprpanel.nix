@@ -9,12 +9,26 @@ in
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
   programs.hyprpanel = {
     enable = true;
-
     overlay.enable = true;
     hyprland.enable = true;
     overwrite.enable = true;
-    theme = "nord_vivid";
-    override.theme.bar.menus.text = "#123ABC";
+
+    override = {
+      theme = {
+        bar = {
+          background = "#1d1a2f";
+          text = "#8bd450";
+          active = "#965fd4";
+          inactive = "#734f9a";
+        };
+        menu = {
+          background = "#1d1a2f";
+          text = "#8bd450";
+          highlight = "#965fd4";
+          border = "#3f6d4e";
+        };
+      };
+    };
 
     layout = {
       "bar.layout" = {
@@ -51,20 +65,15 @@ in
       menus.dashboard.shortcuts.left.shortcut2.command = "spotify";
       menus.dashboard.powermenu.avatar.image = "${iconImage}/icon.png";
       bar.windowtitle.custom_title = true;
-
       menus.clock = {
         time = {
           military = true;
           hideSeconds = false;
         };
-        weather.unit = "imperial";
       };
-
       menus.dashboard.directories.enabled = false;
       menus.dashboard.stats.enable_gpu = true;
-
       theme.bar.transparent = true;
-
       theme.font = {
         name = "JetBrainsMono Nerd Font";
         size = "16px";
