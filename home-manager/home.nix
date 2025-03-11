@@ -78,6 +78,7 @@
       rubik
       rust-bin.nightly.latest.default
       vscode
+      tree
       discord
       zathura
       shfmt
