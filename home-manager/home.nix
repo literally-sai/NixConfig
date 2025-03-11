@@ -56,6 +56,8 @@
       lexend
       material-design-icons
       markdownlint-cli
+      firefox
+      vscode
       fastfetch
       nerd-fonts.fira-code
       nerd-fonts.iosevka

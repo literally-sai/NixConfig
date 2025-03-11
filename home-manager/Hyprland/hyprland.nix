@@ -16,6 +16,7 @@
         "pypr &"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
         "solaar"
+        "${pkgs.hypridle}/bin/hypridle &"
       ];
       monitor = [
         "monitor=,preferred,auto,auto"
@@ -69,9 +70,9 @@
         "$MOD, Q, exec, $terminal" 
         "$MOD, N, exec, $notes"
         "$MOD, W, exec, $terminal nvim"
-        "$MOD, Space, fullscreen,"
-        "$MOD, Alt Space togglefloating,"
-        "$MOD, Shift Space, togglesplit,"
+        "$MOD, Space, fullscreen"
+        "$MOD, Alt Space, togglefloating"
+        "$MOD, Shift Space, togglesplit"
         "$MOD, E, exec, $menu"
         "$MOD, R, exec, $cliFM"
         "$MOD Alt, L, exec, hyprlock"
