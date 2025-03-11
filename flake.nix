@@ -1,56 +1,50 @@
 {
-  description = "A flake";
+  description = "Banger Nix Config";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    stylix.url = "github:danth/stylix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    hyprland.url = "github:hyprwm/Hyprland";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprpanel = { 
+      url = "github:jas-singhfsu/hyprpanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixvim, home-manager, hyprland, ... }:
+  outputs =
+  {
+    self,
+    nixpkgs,
+    home-manager,
+    stylix,
+    rust-overlay,
+    ...
+  }@inputs:
   let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;  
-    };
-    pkgs-stable = import nixpkgs-stable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-    lib = nixpkgs.lib;
-  in {
+    inherit (self) outputs;
+  in
+  {
     nixosConfigurations = {
-      Ghylak = lib.nixosSystem rec {
-        inherit system;
-        specialArgs = {
-          inherit hyprland;
-          inherit pkgs-stable;
-          inherit nixvim;
-        };
+      Ghylak = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
         modules = [
-          ./configuration.nix
-          hyprland.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-	    home-manager.users.sai = import ./home/home.nix;
-            home-manager.extraSpecialArgs = specialArgs;
-            home-manager.sharedModules = [
-              nixvim.homeManagerModules.nixvim
-            ];
-          }
-	  ./hosts/hosts.nix
+          ./nixos/configuration.nix
         ];
       };
     };
