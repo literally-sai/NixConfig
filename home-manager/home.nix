@@ -50,6 +50,7 @@
       ente-auth
       eza
       file-roller
+      firefox
       gcc
       hclfmt
       hyprshade
