@@ -25,7 +25,7 @@
       gs = "git status";
     };
     initExtra = ''
-      PROMPT='%F{blue}λ %1~%f%F{white} |%  '
+      PROMPT='λ ~ '
       fastfetch
       export EDITOR='nvim'
       export TERMINAL='ghostty'
