@@ -9,10 +9,11 @@ in
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-    image = "${stylixImage}/stylix.png"; # Use the image from the Nix store
+    image = "${stylixImage}/stylix.png";
     targets.gtk.enable = true;
     targets.rofi.enable = false;
     targets.nixvim.enable = false;
+    targets.hyprlock.enable = false;
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
