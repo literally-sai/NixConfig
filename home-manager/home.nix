@@ -83,6 +83,7 @@
       zathura
       shfmt
       stylua
+      wl-clipboard
       ungoogled-chromium
       unzip
       webcord-vencord
