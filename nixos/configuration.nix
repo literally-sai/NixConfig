@@ -68,6 +68,15 @@
         pulse.enable = true;
         jack.enable = true;
       };
+      greetd = {
+        enable = true;
+        settings = {
+          default_session = {
+            command = "${pkgs.hyprland}/bin/Hyprland";
+            user = "sai";
+          };
+        };
+      };
     };   
 
   users.users.sai = {

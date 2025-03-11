@@ -49,7 +49,7 @@ in
       menus.dashboard.shortcuts.left.shortcut1.tooltip = "Firefox";
       menus.dashboard.shortcuts.left.shortcut3.command = "webcord";
       menus.dashboard.shortcuts.left.shortcut2.command = "spotify";
-      menus.dashboard.powermenu.avatar.image = "${iconImage}/icon.png"; # Use the image from the Nix store
+      menus.dashboard.powermenu.avatar.image = "${iconImage}/icon.png";
       bar.windowtitle.custom_title = true;
 
       menus.clock = {

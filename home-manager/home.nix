@@ -8,12 +8,12 @@
     inputs.spicetify-nix.homeManagerModules.default
     inputs.stylix.homeManagerModules.stylix
     inputs.nixvim.homeManagerModules.nixvim
+    ./Hyprland/hypridle.nix
     ./Hyprland/hyprland.nix
+    ./Hyprland/hyprlock.nix
+    ./Hyprland/hyprpanel.nix
     ./Hyprland/hyprpaper.nix
     ./Hyprland/hyprshade.nix
-    ./Hyprland/hyprpanel.nix
-    ./Hyprland/hyprlock.nix
-    ./Hyprland/hypridle.nix
     ./Hyprland/pypr.nix
     ./Nixvim/nixvim.nix
     ./ghostty.nix
@@ -56,8 +56,6 @@
       lexend
       material-design-icons
       markdownlint-cli
-      firefox
-      vscode
       fastfetch
       nerd-fonts.fira-code
       nerd-fonts.iosevka
@@ -78,6 +76,9 @@
       roboto
       rubik
       rust-bin.nightly.latest.default
+      vscode
+      discord
+      zathura
       shfmt
       stylua
       ungoogled-chromium

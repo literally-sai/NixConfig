@@ -12,6 +12,7 @@
       "$menu" = "${pkgs.rofi-wayland}/bin/rofi -show drun";
       "$cliFM" = "$terminal -e ${pkgs.yazi}/bin/yazi";
       exec-once = [
+        "${pkgs.hyprlock}/bin/hyprlock &"
         "${pkgs.hyprshade}/bin/hyprshade on vibrance"
         "pypr &"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
@@ -32,7 +33,7 @@
       decoration = {
         rounding = 10;
         active_opacity = 1.0;
-        inactive_opacity = 0.8;
+        inactive_opacity = 1.0;
         blur = {
           enabled = true;
           size = 3;
