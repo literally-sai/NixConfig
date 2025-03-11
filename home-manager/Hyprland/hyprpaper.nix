@@ -5,7 +5,7 @@
     settings = {
       splash = false;
       preload = [ "/home/sai/.home/imgs/wallpaper.png" ];
-      wallpaper = [ "/home/sai/.home/imgs/wallpaper.png" ];
+      wallpaper = [ ",/home/sai/.home/imgs/wallpaper.png" ];
     };
   };
 }
