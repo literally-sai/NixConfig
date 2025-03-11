@@ -35,7 +35,7 @@
       allowUnfreePredicate = _: true;
     };
     overlays = [
-        inputs.rust-overlay.overlays.default
+      inputs.rust-overlay.overlays.default
     ];
   };
 
@@ -89,14 +89,17 @@
       webcord-vencord
       yamlfmt
       yazi
-      zip      
+      zip
+      papirus-icon-theme
     ];
   };
 
   gtk = {
     enable = true;
-    iconTheme.package = pkgs.nordzy-icon-theme;
-    iconTheme.name = "Nordzy-dark";
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
   };
 
   fonts.fontconfig.enable = true;

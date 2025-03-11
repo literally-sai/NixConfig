@@ -3,7 +3,7 @@
   ...
 }:
 {
-  wayland.windowManager.hyprland = {
+wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
     settings = {
@@ -11,10 +11,12 @@
       "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
       "$menu" = "${pkgs.rofi-wayland}/bin/rofi -show drun";
       "$cliFM" = "$terminal -e ${pkgs.yazi}/bin/yazi";
+      "$MOD" = "SUPER";
       exec-once = [
-        "${pkgs.hyprlock}/bin/hyprlock &"
-        "${pkgs.hyprshade}/bin/hyprshade on vibrance"
+        "hyprpaper &"
+        "hyprlock &"
         "pypr &"
+        "${pkgs.hyprshade}/bin/hyprshade on vibrance"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
         "solaar"
         "${pkgs.hypridle}/bin/hypridle &"
@@ -54,7 +56,7 @@
       };
       dwindle = {
         pseudotile = true;
-        preserve_split = true;        
+        preserve_split = true;
       };
       input = {
         kb_layout = "us";
@@ -66,9 +68,9 @@
           natural_scroll = false;
         };
       };
-      "$MOD" = "SUPER";
       bind = [
-        "$MOD, Q, exec, $terminal" 
+        "$MOD, Q, exec, $terminal"
+        "$MOD, C, killactive"
         "$MOD, N, exec, $notes"
         "$MOD, W, exec, $terminal nvim"
         "$MOD, Space, fullscreen"
@@ -117,7 +119,7 @@
       bindm = [
         "$MOD, mouse:272, movewindow"
         "$MOD, mouse:273, resizewindow"
-      ];            
+      ];
     };
   };
 }

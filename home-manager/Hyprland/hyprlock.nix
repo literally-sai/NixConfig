@@ -5,42 +5,56 @@
     settings = lib.mkForce {
       general = {
         disable_loading_bar = false;
-        grace = 0; # Time (in seconds) before locking
+        grace = 0;
         hide_cursor = true;
+        no_fade_in = false;
       };
       background = [
         {
           monitor = "";
-          path = "screenshot"; # Use a screenshot as the background
-          blur_passes = 3;
-          blur_size = 8;
+          color = "rgb(20, 10, 40)";
         }
       ];
       input-field = [
         {
           monitor = "";
-          size = "200, 50";
-          outline_thickness = 2;
-          dots_size = 0.2;
-          dots_spacing = 0.2;
+          size = "300, 80";
+          outline_thickness = 3;
+          dots_size = 0.25;
+          dots_spacing = 0.3;
           dots_center = true;
-          outer_color = "rgb(0, 0, 0)";
-          inner_color = "rgb(255, 255, 255)";
-          font_color = "rgb(0, 0, 0)";
+          outer_color = "rgb(106, 0, 255)";
+          inner_color = "rgb(20, 10, 40)";
+          font_color = "rgb(0, 255, 0)";
           fade_on_empty = false;
-          placeholder_text = "<i>Enter Password...</i>";
-          position = "0, -20";
+          placeholder_text = "<i>Enter Neural Link...</i>";
+          position = "0, -50";
           halign = "center";
           valign = "center";
+          shadow_passes = 2;
+          shadow_size = 5;
         }
       ];
       label = [
         {
           monitor = "";
           text = "cmd[update:1000] echo \"$TIME\"";
-          font_size = 55;
+          color = "rgb(255, 69, 0)";
+          font_size = 70;
           font_family = "JetBrainsMono Nerd Font";
-          position = "0, 120";
+          position = "0, 150";
+          halign = "center";
+          valign = "bottom";
+          shadow_passes = 5;
+          shadow_size = 12;
+        }
+        {
+          monitor = "";
+          text = "$USER";
+          color = "rgb(106, 0, 255)";
+          font_size = 25;
+          font_family = "JetBrainsMono Nerd Font";
+          position = "0, 100";
           halign = "center";
           valign = "bottom";
           shadow_passes = 5;
@@ -48,15 +62,15 @@
         }
         {
           monitor = "";
-          text = "$USER";
-          color = "rgba(200, 200, 200, 1.0)";
-          font_size = 20;
+          text = "NERV LOCKDOWN PROTOCOL";
+          color = "rgb(0, 255, 0)";
+          font_size = 18;
           font_family = "JetBrainsMono Nerd Font";
-          position = "0, 80";
+          position = "0, -150";
           halign = "center";
-          valign = "bottom";
-          shadow_passes = 5;
-          shadow_size = 10;
+          valign = "center";
+          shadow_passes = 3;
+          shadow_size = 8;
         }
       ];
     };
