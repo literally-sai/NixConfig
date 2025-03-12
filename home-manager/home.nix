@@ -57,6 +57,7 @@
       lexend
       material-design-icons
       markdownlint-cli
+      nodejs_23
       fastfetch
       nerd-fonts.fira-code
       nerd-fonts.iosevka
