@@ -70,6 +70,7 @@
       pavucontrol
       playerctl
       prettierd
+      kitty
       protonmail-desktop
       pulsemixer
       pyprland
