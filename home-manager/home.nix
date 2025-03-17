@@ -20,7 +20,6 @@
     ./kitty.nix
     ./fastfetch.nix
     ./rofi.nix
-    ./wlogout.nix
     ./fzf.nix
     ./zsh.nix
     ./spicetify.nix
