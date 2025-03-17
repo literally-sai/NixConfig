@@ -122,10 +122,4 @@
     bindm = $MOD, mouse:272, movewindow
     bindm = $MOD, mouse:273, resizewindow
   '';
-
-  # Enable Hyprland and XWayland
-  wayland.windowManager.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
 }
