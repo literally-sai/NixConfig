@@ -3,7 +3,7 @@
   # Define the hyprland.conf file
   home.file.".config/hypr/hyprland.conf".text = ''
     # Variables
-    $terminal = ghostty
+    $terminal = kitty
     $fileManager = nautilus
     $menu = rofi -show drun
     $cliFM = $terminal -e yazi
