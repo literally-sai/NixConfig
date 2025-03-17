@@ -1,155 +1,64 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, ... }:
 {
-  programs.fastfetch = {
-    enable = true;
-    settings = {
-      logo = {
-        type = "raw";
-        source = ''
-                                   ---.           ,-----,       --,                                               
-                                  /\\\\\           \OOO0\      /OO0\                                              
-                                  \/\\\\\           \OOO0\    /OOOO\                                              
-                                   \/\\\\\           \OOO0\  /OOOO/                                               
-                                    \/\\\\\           \OOO0\/OOOO/                                                
-                              -------\/\\\\\---------  \OOOOOOOO/                                                 
-                             ///////////////////////\\  \OOOOOO/                                                  
-                            /\\\\\\\\\\\\\\\\\\\\\\\\\\  \OOOO0\                                                  
-                           ****************************   \00000\                                                 
-                                                           \OOO00\                                                 
-                                  ,-----                    \O0000\    \                                                     
-                                 /OOOOO/                     \00000/  /\\                                                    
-                                /OOOOO/                       \000/  /\\\\                                                   
-                               /0OOOO/                         \0/  /\\\\/`                                                  
-                              /00OOO/                           /  /\\\\//                                                   
-                ,-===========/000OO/                              //\\\//                                                    
-                \0000OOOOOOOOOOOOO/                              //\\\//                                                     
-                 \00000OOOOOOOOOO/                              //\\\/---------                                              
-                  `*******/OOOOO/                              /\\\\\\\\\\\\\\\\                                             
-                         /OOOOO/                              /\\\\\////////////;                                            
-                        /OOOOO/                              /\\\\/************'                                             
-                       /0OOOO/  \                           /\\\\//                                                          
-                      \00OOO/  *\\                         /\\\\//                                                           
-                       \000/  *///\                       /\\\\//                                                            
-                        \0/  */////\                     /\\\\//                                                             
-                         `    */////\                   *******                                                             
-                               */////\                                                                                         
-                                */////\  =============================                                                   
-                                 */////\  \000OOOOOOOOOOOOOOOOOOOOOO/                                                    
-                                 ///////\  \00000OOOOOOOOOO0000OOOO/                                                     
-                                /////////\  `********`\OOOO\*******                                                      
-                               ////\\//\//\            \OOOO\                                                            
-                              ////\\/ \/\//\            \0OOO\                                                           
-                             ////\\/   \/\//\            \00OO\                                                          
-                             *//\\/     \/\//\            \0000\                                                         
-                              ****       ``***`            ****                                             
-        '';
-        padding = { right = 4; top = 1; };
-        height = 30;
-      };
-      display = {
-        size.binaryPrefix = "si";
-        color = "magenta";
-        separator = " λ ";
-        key = {
-          color = "green";
-          width = 14;
-        };
-        bar = {
-          charElapsed = "─";
-          charTotal = "─";
-          width = 20;
-        };
-      };
-      modules = [
-        {
-          type = "title";
-          key = "System";
-          keyColor = "cyan";
-          format = "{1}@{2}";
+  home.file.".config/fastfetch/config.jsonc".text = ''
+    {
+      "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+      "logo": {
+        "type": "small",
+        "padding": {
+          "top": 2,
+          "left": 2
         }
-        {
-          key = "OS          ";
-          type = "os";
+      },
+      "display": {
+        "separator": " ➜ ",
+        "color": "cyan",
+        "key": {
+          "width": 20
         }
+      },
+      "modules": [
         {
-          key = "Kernel      ";
-          type = "kernel";
-        }
+          "type": "os",
+          "key": "OS"
+        },
         {
-          key = "Host        ";
-          type = "host";
-        }
+          "type": "kernel",
+          "key": "Kernel"
+        },
         {
-          key = "Uptime      ";
-          type = "uptime";
-        }
+          "type": "uptime",
+          "key": "Uptime"
+        },
         {
-          key = "Packages    ";
-          type = "packages";
-        }
-        "break"
+          "type": "packages",
+          "key": "Packages"
+        },
         {
-          type = "title";
-          key = "Interface";
-          keyColor = "cyan";
-          format = "Terminal Environment";
-        }
+          "type": "shell",
+          "key": "Shell"
+        },
         {
-          key = "WM          ";
-          type = "wm";
-        }
+          "type": "wm",
+          "key": "WM"
+        },
         {
-          key = "Terminal    ";
-          type = "terminal";
-        }
+          "type": "cpu",
+          "key": "CPU"
+        },
         {
-          key = "Shell       ";
-          type = "shell";
-        }
-        "break"
+          "type": "gpu",
+          "key": "GPU"
+        },
         {
-          type = "title";
-          key = "Hardware";
-          keyColor = "cyan";
-          format = "System Resources";
-        }
+          "type": "memory",
+          "key": "Memory"
+        },
         {
-          key = "CPU         ";
-          type = "cpu";
-          temp = true;
-          freq = true;
+          "type": "disk",
+          "key": "Disk"
         }
-        {
-          key = "GPU         ";
-          type = "gpu";
-          temp = true;
-        }
-        {
-          key = "Memory      ";
-          type = "memory";
-          format = "{used-percentage}% ({used} / {total})";
-        }
-        {
-          key = "Disk        ";
-          type = "disk";
-          format = "{used-percentage}% ({used} / {total})";
-        }
-        {
-          key = "Battery     ";
-          type = "battery";
-          format = "{percentage}% ({status})";
-        }
-        "break"
-        {
-          type = "colors";
-          paddingLeft = 14;
-          symbol = "circle";
-          block = {
-            width = 8;
-            height = 2;
-          };
-        }
-      ];
-    };
-  };
+      ]
+    }
+  '';
 }

@@ -1,11 +1,8 @@
 { config, pkgs, ... }:
 {
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      splash = false;
-      preload = [ "/home/sai/.home/imgs/wallpaper.png" ];
-      wallpaper = [ ",/home/sai/.home/imgs/wallpaper.png" ];
-    };
-  };
+  home.file.".config/hypr/hyprpaper.conf".text = ''
+    splash = false
+    preload = /home/sai/.home/imgs/wallpaper.png
+    wallpaper = ,/home/sai/.home/imgs/wallpaper.png
+  '';
 }

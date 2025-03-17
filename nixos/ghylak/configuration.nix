@@ -34,7 +34,7 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
-    networking.hostName = "Ghylak";
+    networking.hostName = "Murgo";
     networking.networkmanager.enable = true;
     time.timeZone = "Europe/Berlin";
 
@@ -84,6 +84,7 @@
     description = "Sai";
     shell = pkgs.zsh;
     extraGroups = [
+        "docker"
         "networkmanager"
         "wheel"
     ];
@@ -97,7 +98,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     users = {
-        sai = import ../home-manager/home.nix;
+        sai = import ../../home-manager/home.nix;
     };
   };
 

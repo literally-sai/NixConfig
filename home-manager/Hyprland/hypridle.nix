@@ -1,24 +1,63 @@
+{ inputs, config, pkgs, ... }:
 {
-  services.hypridle = {
-    enable = false;
-    settings = {
-      general = {
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-        ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
-      };
-      listener = [
-        {
-          timeout = 180;
-          on_timeout = "loginctl lock-session";
-          on_resume = "dunstify 'Welcome Back!'";
-        }
-        {
-          timeout = 270;
-          on_timeout = "hyprctl dispatch dpms off";
-          on_resume = "hyprctl dispatch dpms on";
-        }
-      ];
-    };
-  };
+  home.file."~/.config/hypr/hypridle.conf".text = ''
+    general {
+        ignore_dbus_inhibit    = false
+        ignore_systemd_inhibit = false
+    }
+    # listener {
+    #     timeout    = 591
+    #     on-timeout = notify-send "Warning" "Locking Screen in 10 .."
+    # }
+    #
+    # listener {
+    #     timeout    = 592
+    #     on-timeout = notify-send "Warning" "Locking Screen in 9 .."
+    # }
+    #
+    # listener {
+    #     timeout    = 593
+    #     on-timeout = notify-send "Warning" "Locking Screen in 7 .."
+    # }
+    #
+    # listener {
+    #     timeout    = 594
+    #     on-timeout = notify-send "Warning" "Locking Screen in 6 .."
+    # }
+    #
+    # listener {
+    #     timeout    = 595
+    #     on-timeout = notify-send "Warning" "Locking Screen in 5 .."
+    # }
+    #
+    # listener {
+    #     timeout    = 596
+    #     on-timeout = notify-send "Warning" "Locking Screen in 4 .."
+    # }
+    #
+    # listener {
+    #     timeout    = 597
+    #     on-timeout = notify-send "Warning" "Locking Screen in 3 .."
+    # }
+    #
+    # listener {
+    #     timeout    = 598
+    #     on-timeout = notify-send "Warning" "Locking in Screen 2 .."
+    # }
+    #
+    # listener {
+    #     timeout    = 599
+    #     on-timeout = notify-send "Warning" "Locking Screen in 1 .."
+    # }
+
+    listener {
+        timeout    = 600
+        on-timeout = hyprlock -q
+    }
+
+    listener {
+        timeout    = 900
+        on-timeout = systemctl suspend
+    }
+  '';
 }

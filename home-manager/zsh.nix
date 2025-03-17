@@ -14,8 +14,6 @@
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
       ls = "eza --icons";
-      nrb = "sudo nixos-rebuild switch --flake /home/sai/.home#Ghylak";
-      nfu = "nix flake update --flake /home/sai/.home#Ghylak";
       ngc = "sudo nix-collect-garbage --delete-old";
       g = "git";
       ga = "git add";
@@ -25,12 +23,12 @@
       gs = "git status";
     };
     initExtra = ''
-      PROMPT='λ ~ '
+      PROMPT='$CYANλ $BLUE%~$YELLOW ''${vcs_info_msg_0_}$WHITE➜ '
       fastfetch
       export EDITOR='nvim'
       export TERMINAL='ghostty'
       export BROWSER='chromium'
-      export TERM='ghostty'
+      export TERM='kitty'
     '';
   };
 }
