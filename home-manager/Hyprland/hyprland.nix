@@ -1,4 +1,8 @@
-{ inputs, config, ... }:
+{
+  inputs,
+  config,
+  ...
+}:
 {
   # Define the hyprland.conf file
   home.file.".config/hypr/hyprland.conf".text = ''
@@ -11,6 +15,7 @@
 
     # Autostart programs
     exec-once = hyprpaper &
+    exec-once = hyprpanel &
     exec-once = pypr &
     exec-once = hyprshade on vibrance
     exec-once = solaar

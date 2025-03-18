@@ -25,7 +25,10 @@
     in
     {
       settings = {
-        experimental-features = [ "nix-command" "flakes" ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
         flake-registry = "";
         nix-path = config.nix.nixPath;
       };
@@ -34,59 +37,59 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
-    networking.hostName = "Ghylak";
-    networking.networkmanager.enable = true;
-    time.timeZone = "Europe/Berlin";
+  networking.hostName = "Ghylak";
+  networking.networkmanager.enable = true;
+  time.timeZone = "Europe/Berlin";
 
-    i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "de_DE.UTF-8";
-      LC_IDENTIFICATION = "de_DE.UTF-8";
-      LC_MEASUREMENT = "de_DE.UTF-8";
-      LC_MONETARY = "de_DE.UTF-8";
-      LC_NAME = "de_DE.UTF-8";
-      LC_NUMERIC = "de_DE.UTF-8";
-      LC_PAPER = "de_DE.UTF-8";
-      LC_TELEPHONE = "de_DE.UTF-8";
-      LC_TIME = "de_DE.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
+  };
+  hardware = {
+    graphics.enable = true;
+  };
+  services = {
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
     };
-    hardware = {
-      graphics.enable = true;
+    pulseaudio.enable = false;
+    gnome.gnome-keyring.enable = true;
+    gvfs.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
     };
-    services = {
-      xserver.xkb = {
-        layout = "us";
-        variant = "";
-      };
-      pulseaudio.enable = false;
-      gnome.gnome-keyring.enable = true;
-      gvfs.enable = true;
-      pipewire = {
-        enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-        jack.enable = true;
-      };
-      greetd = {
-        enable = true;
-        settings = {
-          default_session = {
-            command = "${pkgs.hyprland}/bin/Hyprland";
-            user = "sai";
-          };
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "sai";
         };
       };
-    };   
+    };
+  };
 
   users.users.sai = {
     isNormalUser = true;
     description = "Sai";
     shell = pkgs.zsh;
     extraGroups = [
-        "docker"
-        "networkmanager"
-        "wheel"
+      "docker"
+      "networkmanager"
+      "wheel"
     ];
   };
 
@@ -98,9 +101,11 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     users = {
-        sai = import ../../home-manager/home.nix;
+      sai = import ../../home-manager/home.nix;
     };
   };
 
+  hardware.bluetooth.enable = true;
+  security.rtkit.enable = true;
   system.stateVersion = "24.11";
 }

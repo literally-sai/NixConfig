@@ -14,7 +14,6 @@
     ./Hyprland/hyprpanel.nix
     ./Hyprland/hyprpaper.nix
     ./Hyprland/hyprshade.nix
-    ./Hyprland/pypr.nix
     ./Nixvim/nixvim.nix
     ./ghostty.nix
     ./kitty.nix
@@ -47,6 +46,7 @@
       black
       brave
       ente-auth
+      hyprpaper
       eza
       file-roller
       firefox
