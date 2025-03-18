@@ -1,4 +1,9 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
   home.file.".config/hyprpanel/config".text = ''
@@ -46,4 +51,8 @@
     settings.theme.font.name = "JetBrainsMono Nerd Font"
     settings.theme.font.size = "12px"
   '';
+  programs.hyprpanel = {
+    enable = true;
+    overlay.enable = true;
+  };
 }

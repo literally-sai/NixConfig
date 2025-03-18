@@ -1,4 +1,9 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 {
   home.file.".config/hypr/hyprlock.conf".text = ''
     general {
@@ -100,4 +105,6 @@
         valign = bottom
     }
   '';
+  programs.hyprlock.enable = true;
 }
+

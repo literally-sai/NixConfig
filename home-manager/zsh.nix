@@ -23,12 +23,11 @@
       gs = "git status";
     };
     initExtra = ''
-      PROMPT='$CYANλ $BLUE%~$YELLOW ''${vcs_info_msg_0_}$WHITE➜ '
-      fastfetch
       export EDITOR='nvim'
-      export TERMINAL='ghostty'
-      export BROWSER='chromium'
-      export TERM='kitty'
+       export TERMINAL='ghostty'
+       export BROWSER='chromium'
+       export TERM='kitty'
     '';
   };
 }
+
