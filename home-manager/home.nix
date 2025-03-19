@@ -93,18 +93,6 @@
     ];
   };
 
-  gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.materia-theme;
-      name = "Materia-light";
-    };
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-  };
-
   fonts.fontconfig.enable = true;
 
   programs = {

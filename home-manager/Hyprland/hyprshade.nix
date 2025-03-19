@@ -34,17 +34,5 @@
       gl_FragColor = pixColor;
     }
   '';
-
-  services.hyprshade = {
-    enable = true;
-    package = pkgs.hyprshade;
-    settings = {
-      auto = [
-        {
-          name = "vibrance";
-          default = true;
-        }
-      ];
-    };
-  };
 }
+

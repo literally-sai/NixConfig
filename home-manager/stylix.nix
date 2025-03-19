@@ -16,6 +16,7 @@ in
       rofi.enable = false;
       nixvim.enable = false;
       hyprlock.enable = false;
+      spicetify.enable = false;
     };
     cursor = {
       package = pkgs.bibata-cursors;

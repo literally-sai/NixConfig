@@ -6,7 +6,9 @@ in
 {
   programs.spicetify = {
     enable = true;
-    theme = "ElegantDark";
+    theme = {
+      name = "ElegantDark";
+    };
     colorScheme = "custom";
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplayMod
@@ -54,21 +56,18 @@ in
         --shadow-dark: rgba(10, 10, 10, 0.6);
     }
 
-    /* Main container styling */
     .main-container {
         background-color: #1a1a1a !important;
         border: 1px solid #2a2a3a;
         box-shadow: inset 0 0 10px var(--shadow-light);
     }
 
-    /* Sidebar styling */
     .side-panel {
         background-color: #2a2a3a !important;
         border-right: 1px solid #6b4e9a;
         box-shadow: 0 0 15px var(--shadow-dark);
     }
 
-    /* Buttons with elegant hover effects */
     button, .button {
         transition: all 0.3s ease;
         border-radius: 8px;
@@ -85,7 +84,6 @@ in
         box-shadow: 0 2px 8px var(--shadow-dark);
     }
 
-    /* Progress bar styling */
     .progress-bar-wrapper {
         background-color: #3a3a4a !important;
         border-radius: 10px;
@@ -96,7 +94,6 @@ in
         box-shadow: 0 0 8px rgba(107, 78, 154, 0.5);
     }
 
-    /* Highlight and selection styling */
     .highlight, .selected-row, .selected {
         background-color: #6b4e9a !important;
         color: #e8e8e8 !important;
@@ -107,20 +104,17 @@ in
         background-color: #7b5eba !important;
     }
 
-    /* Text styling */
     body, .main-type-canon, .main-type-mesto {
         color: #e8e8e8 !important;
         font-family: var(--spice-font) !important;
         text-shadow: 0 0 2px var(--shadow-light);
     }
 
-    /* Active/playing states with subtle glow */
     .active, .playing, .selected {
         box-shadow: 0 0 12px rgba(107, 78, 154, 0.7);
         border: 1px solid #6b4e9a;
     }
 
-    /* Cards with depth */
     .card, .playlist-card {
         background-color: #3a3a4a !important;
         border-radius: 10px;
@@ -132,7 +126,6 @@ in
         box-shadow: 0 6px 18px var(--shadow-dark);
     }
 
-    /* Scrollbar styling */
     ::-webkit-scrollbar {
         width: 10px;
     }

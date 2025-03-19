@@ -1,56 +1,34 @@
 { config, pkgs, ... }:
-
 {
   programs.kitty = {
     enable = true;
-    shellIntegration.enableZshIntegration = true; # Integrates Zsh as the shell
-    font = {
-      name = "Hermit Nerd Font";
-      size = 14.0;
-    };
+    shellIntegration.enableZshIntegration = true;
     settings = {
-      # General settings
       confirm_os_window_close = 0;
       window_padding_width = 10;
-
-      # Colors
       foreground = "#CDD6F4";
       background = "#1E1E2E";
       selection_foreground = "#1E1E2E";
       selection_background = "#F5E0DC";
-
-      # Cursor
       cursor = "#F5E0DC";
       cursor_text_color = "#1E1E2E";
-
-      # URL
       url_color = "#F5E0DC";
-
-      # Border colors
       active_border_color = "#B4BEFE";
       inactive_border_color = "#6C7086";
       bell_border_color = "#F9E2AF";
-
-      # Titlebar (for Wayland and macOS)
       wayland_titlebar_color = "system";
       macos_titlebar_color = "system";
-
-      # Tab bar colors
       active_tab_foreground = "#11111B";
       active_tab_background = "#CBA6F7";
       inactive_tab_foreground = "#CDD6F4";
       inactive_tab_background = "#181825";
       tab_bar_background = "#11111B";
-
-      # Mark colors
       mark1_foreground = "#1E1E2E";
       mark1_background = "#B4BEFE";
       mark2_foreground = "#1E1E2E";
       mark2_background = "#CBA6F7";
       mark3_foreground = "#1E1E2E";
       mark3_background = "#74C7EC";
-
-      # Color table
       color0 = "#45475A";
       color8 = "#585B70";
       color1 = "#F38BA8";

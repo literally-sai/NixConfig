@@ -1,31 +1,28 @@
 {
   programs.nixvim = {
-    # Enable NixVim and set it as the default editor
     enable = true;
     defaultEditor = true;
 
-    # Set global variables (leader keys and nerd font support)
     globals = {
       mapleader = " ";
       maplocalleader = " ";
       have_nerd_font = true;
     };
 
-    # General Neovim options
     opts = {
-      number = true;              # Show line numbers
-      relativenumber = true;      # Enable relative line numbers
-      tabstop = 2;                # 2 spaces for tabs
+      number = true;
+      relativenumber = true;
+      tabstop = 2;
       softtabstop = 2;
-      showtabline = 2;            # Always show tabline
-      expandtab = true;           # Use spaces instead of tabs
-      showmode = false;           # Hide mode (handled by statusline)
+      showtabline = 2;
+      expandtab = true;
+      showmode = false;
       clipboard = {
         providers = {
-          "wl-copy".enable = true; # Wayland clipboard
-          xsel.enable = true;      # X11 clipboard
+          "wl-copy".enable = true;
+          xsel.enable = true;
         };
-        register = "unnamedplus";  # Use system clipboard
+        register = "unnamedplus";
       };
       smartindent = true;
       shiftwidth = 2;
@@ -35,14 +32,14 @@
       wrap = true;
       splitbelow = true;
       splitright = true;
-      mouse = "a";                # Enable mouse support
+      mouse = "a";
       ignorecase = true;
       smartcase = true;
       updatetime = 250;
       scrolloff = 10;
       swapfile = false;
       backup = false;
-      undofile = true;            # Persistent undo
+      undofile = true;
       list = true;
       listchars.__raw = "{ tab = '» ', trail = '·', nbsp = '␣' }";
       inccommand = "split";
@@ -54,30 +51,29 @@
       foldenable = true;
     };
 
-    # Enable multiple themes for toggling (no Nord)
     colorschemes = {
       gruvbox.enable = true;
-      solarized.enable = true;
       tokyonight.enable = true;
       catppuccin.enable = true;
     };
 
-    # Plugin configurations
     plugins = {
-      # Enable web-devicons for better UI
       web-devicons.enable = true;
 
-      # LSP configuration
       lsp = {
         enable = true;
         servers = {
-          rust_analyzer = { enable = true; }; # Rust LSP
-          nil_ls = { enable = true; };        # Nix LSP
-          ts_ls = { enable = true; };         # TypeScript, JavaScript, React
-          cssls = { enable = true; };         # CSS
-          html = { enable = true; };          # HTML
-          clangd = { enable = true; };        # C/C++
-          sqls = { enable = true; };          # SQL (for PostgreSQL)
+          rust_analyzer = {
+            enable = true;
+            installCargo = false;
+            installRustc = false;
+          };
+          nil_ls = { enable = true; };
+          ts_ls = { enable = true; };
+          cssls = { enable = true; };
+          html = { enable = true; };
+          clangd = { enable = true; };
+          sqls = { enable = true; };
         };
         keymaps = {
           silent = true;
@@ -101,7 +97,6 @@
         };
       };
 
-      # Autocompletion with cmp
       cmp = {
         enable = true;
         settings = {
@@ -153,7 +148,6 @@
       cmp_luasnip.enable = true;
       cmp-emoji.enable = true;
 
-      # Formatting with conform-nvim
       conform-nvim = {
         enable = true;
         settings = {
@@ -175,7 +169,6 @@
         };
       };
 
-      # Linting
       lint = {
         enable = true;
         lintersByFt = {
@@ -195,18 +188,16 @@
         };
       };
 
-      # File explorer with neo-tree
       neo-tree = {
         enable = true;
         filesystem = {
           window.mappings = {
-            "a" = "add";           # Create file/dir
-            "r" = "rename";        # Rename file/dir
+            "a" = "add";
+            "r" = "rename";
           };
         };
       };
 
-      # Telescope for file finding and theme switching
       telescope = {
         enable = true;
         extensions = {
@@ -215,7 +206,6 @@
         };
       };
 
-      # Syntax highlighting with treesitter
       treesitter = {
         enable = true;
         settings.ensure_installed = [
@@ -223,52 +213,44 @@
         ];
       };
 
-      # Additional plugins for enhanced experience
-      bufferline.enable = true;     # Buffer tabs
-      lualine.enable = true;        # Statusline
-      luasnip.enable = true;        # Snippet engine
-      undotree.enable = true;       # Undo history
-      gitsigns.enable = true;       # Git signs
+      bufferline.enable = true;
+      lualine.enable = true;
+      luasnip.enable = true;
+      undotree.enable = true;
+      gitsigns.enable = true;
     };
 
-    # Keymappings
     keymaps = [
-      # Format code
       {
         mode = [ "n" "v" ];
         key = "<leader>cf";
         action = "<cmd>lua vim.lsp.buf.format()<cr>";
         options = { silent = true; desc = "Format"; };
       }
-      # Clear search highlights
       {
         mode = "n";
         key = "<Esc>";
         action = "<cmd>nohlsearch<CR>";
         options = { silent = true; };
       }
-      # Toggle file explorer (NVChad-like Ctrl n)
       {
         mode = "n";
         key = "<C-n>";
         action = "<cmd>Neotree toggle<cr>";
         options = { desc = "Toggle NeoTree"; };
       }
-      # Find files with Telescope
       {
         mode = "n";
         key = "<leader>ff";
         action = "<cmd>Telescope find_files<cr>";
         options = { desc = "Find Files"; };
       }
-      # Switch themes with Telescope
       {
         mode = "n";
         key = "<leader>th";
         action = "<cmd>Telescope colorscheme<cr>";
         options = { desc = "Switch Theme"; };
       }
-      # Additional NVChad-inspired keymaps
       {
         mode = "n";
         key = "<leader>e";
@@ -283,7 +265,6 @@
       }
     ];
 
-    # Extra Lua configuration for UI enhancements
     extraConfigLua = ''
       local _border = "rounded"
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -295,7 +276,6 @@
       vim.diagnostic.config{ float={border=_border} }
       require('lspconfig.ui.windows').default_options = { border = _border }
 
-      -- CMP kind icons
       local cmp = require'cmp'
       cmp.setup {
         formatting = {
