@@ -24,7 +24,6 @@
     ./zsh.nix
     ./spicetify.nix
     ./stylix.nix
-    ./git.nix
     ./wlogout.nix
   ];
 
