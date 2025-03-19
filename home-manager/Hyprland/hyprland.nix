@@ -77,10 +77,10 @@
           "$MOD, Q, exec, $terminal"
           "$MOD, C, killactive,"
           "$MOD, W, exec, $terminal -e nvim"
-          "$MOD, V, fullscreen," # Fullscreen with MOD V
-          "$MOD ALT, V, togglefloating," # Floating with MOD Alt V
-          "$MOD SHIFT, V, exec, pypr toggle term && hyprctl dispatch bringactivetotop" # Toggle scratchpad with MOD Shift V
-          "$MOD SHIFT, U, exec, hyprlock" # Lock with MOD Shift L
+          "$MOD, V, fullscreen,"
+          "$MOD ALT, V, togglefloating,"
+          "$MOD SHIFT, V, exec, pypr toggle term && hyprctl dispatch bringactivetotop"
+          "$MOD SHIFT, U, exec, hyprlock"
           "$MOD, E, exec, $menu"
           "$MOD, R, exec, $cliFM"
           "$MOD, Shift Space, togglesplit,"
@@ -121,4 +121,3 @@
     };
   };
 }
-

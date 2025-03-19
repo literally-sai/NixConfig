@@ -1,4 +1,9 @@
 {
+  pkgs,
+  config,
+  ...
+}:
+{
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -49,14 +54,29 @@
       foldlevel = 99;
       foldlevelstart = 99;
       foldenable = true;
+      termguicolors = true;
     };
 
-    colorscheme = "gruvbox";
+    colorscheme = "cyberdream";
 
     colorschemes = {
-      gruvbox.enable = true;
       tokyonight.enable = true;
-      catppuccin.enable = true;
+      ayu.enable = true;
+      cyberdream.enable = true;
+      dracula.enable = true;
+      gruvbox.enable = true;
+      kanagawa.enable = true;
+      melange.enable = true;
+      modus.enable = true;
+      nightfox.enable = true;
+      nord.enable = true;
+      one.enable = true;
+      onedark.enable = true;
+      oxocarbon.enable = true;
+      palette.enable = true;
+      poimandres.enable = true;
+      rose-pine.enable = true;
+      vscode.enable = true;
     };
 
     plugins = {
@@ -185,7 +205,6 @@
               require('lint').try_lint()
             end
           '';
-          group = "lint";
           event = [ "BufEnter" "BufWritePost" "InsertLeave" ];
         };
       };
@@ -205,6 +224,16 @@
         extensions = {
           fzf-native.enable = true;
           ui-select.enable = true;
+        };
+        settings = {
+          defaults = {
+            layout_strategy = "vertical";
+            layout_config = {
+              height = 0.9;
+              width = 0.6;
+              preview_height = 0.6;
+            };
+          };
         };
       };
 
@@ -250,8 +279,8 @@
       {
         mode = "n";
         key = "<leader>th";
-        action = "<cmd>Telescope colorscheme<cr>";
-        options = { desc = "Switch Theme"; };
+        action = "<cmd>Telescope colorscheme enable_preview=true<cr>";
+        options = { desc = "Switch Theme with Live Preview"; };
       }
       {
         mode = "n";
@@ -295,6 +324,21 @@
             return vim_item
           end
         }
+      }
+
+      require('telescope').setup {
+        defaults = {
+          mappings = {
+            i = {
+              ["<CR>"] = require('telescope.actions').select_default + require('telescope.actions').center,
+            },
+          },
+        },
+        pickers = {
+          colorscheme = {
+            enable_preview = true,
+          },
+        },
       }
     '';
   };
