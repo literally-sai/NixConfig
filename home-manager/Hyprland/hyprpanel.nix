@@ -5,7 +5,7 @@
   ...
 }:
 let
-  dir = "${config.home.homeDirectory}";
+  dir = "${config.home.homeDirectory}/.flake/resources";
 in
 {
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
@@ -60,7 +60,7 @@ in
       menus.dashboard.shortcuts.left.shortcut3 = {
         command = "webcord";
       };
-      menus.dashboard.powermenu.avatar.image = "${dir}/.home/imgs/icon.png";
+      menus.dashboard.powermenu.avatar.image = "${dir}/panel_icon.png";
       bar.windowtitle.custom_title = true;
       menus.clock.time = {
         military = true;

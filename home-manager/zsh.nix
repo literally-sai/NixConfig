@@ -19,13 +19,7 @@ in
       "....." = "cd ../../../..";
       ls = "eza --icons";
 
-      nsc = "nvim ${dir}/nixos/ghylak/configuration.nix";
-      nrs = "sudo nixos-rebuild switch --flake '${dir}/.home/'";
-      hsc = "nvim ${dir}/home-manager/home.nix";
-      fsc = "nvim ${dir}/.home/flake.nix";
-      nhl = "nvim ${dir}/home-manager/Hyprland/hyprland.nix";
-      nhp = "nvim ${dir}/home-manager/Hyprland/hyprpanel.nix";
-      nfu = "nix flake update --flake ${dir}/.home/";
+      nrs = "sudo nixos-rebuild switch --flake '${dir}/.flake/'";
       ngc = "sudo nix-collect-garbage --delete-old";
 
       g = "git";

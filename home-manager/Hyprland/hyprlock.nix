@@ -9,7 +9,7 @@
       };
       background = {
         monitor = "";
-        path = "${config.home.homeDirectory}/wallpapers/background.png";
+        path = "${config.home.homeDirectory}/.flake/resources/background.png";
         color = "rgba(25, 20, 20, 1.0)";
       };
       input-field = {

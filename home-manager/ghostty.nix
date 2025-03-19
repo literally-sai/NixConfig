@@ -4,7 +4,7 @@
     installBatSyntax = true;
     installVimSyntax = true;
     settings = {
-      theme = "gruvbox-light"; # Changed from "nord"
+      theme = "gruvbox-light";
       font-size = 14;
       window-padding-x = 0;
       window-padding-y = 0;

@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  image_dir = "${config.home.homeDirectory}/images/wlogout";
+  image_dir = "${config.home.homeDirectory}/.flake/resources";
 in
 {
   programs.wlogout = {

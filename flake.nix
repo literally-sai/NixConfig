@@ -35,13 +35,13 @@
     {
       nixosConfigurations = {
         Ghylak = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs self; };
           modules = [
             ./nixos/ghylak/configuration.nix
           ];
         };
         Murgo = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs self; };
           modules = [
             ./nixos/murgo/configuration.nix
           ];

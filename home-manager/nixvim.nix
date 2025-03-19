@@ -51,6 +51,8 @@
       foldenable = true;
     };
 
+    colorscheme = "gruvbox";
+
     colorschemes = {
       gruvbox.enable = true;
       tokyonight.enable = true;

@@ -4,7 +4,7 @@
   ...
 }:
 let
-  wallpapers_dir = "${config.home.homeDirectory}/wallpapers";
+  wallpapers_dir = "${config.home.homeDirectory}/.flake/resources";
 in
 {
   services.hyprpaper = {
