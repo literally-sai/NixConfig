@@ -32,14 +32,28 @@ in
     layout = {
       "bar.layouts" = {
         "0" = {
-          left = [ "dashboard" "workspaces" ];
+          left = [
+            "dashboard"
+            "workspaces"
+          ];
           middle = [ "windowtitle" ];
-          right = [ "systray" "volume" "clock" ];
+          right = [
+            "systray"
+            "volume"
+            "clock"
+          ];
         };
         "1" = {
-          left = [];
-          middle = [];
-          right = [];
+          left = [
+            "dashboard"
+            "workspaces"
+          ];
+          middle = [ "windowtitle" ];
+          right = [
+            "systray"
+            "volume"
+            "clock"
+          ];
         };
       };
     };
@@ -76,3 +90,4 @@ in
     };
   };
 }
+

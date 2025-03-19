@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   outputs,
   lib,
@@ -25,13 +26,13 @@
   };
 
   nixpkgs = {
-    overlays = [];
+    overlays = [ ];
     config = {
       allowUnfree = true;
     };
   };
 
-  nix = 
+  nix =
     let
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
     in
@@ -112,7 +113,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs self; };
     users = {
       sai = import ../../home-manager/home.nix;
     };
