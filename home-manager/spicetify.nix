@@ -2,9 +2,29 @@
 
 let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-  themeDir = pkgs.runCommand "spicetify-theme-elegant-dark" {} ''
-    mkdir -p $out
-    cat > $out/color.ini <<EOF
+in
+{
+  programs.spicetify = {
+    enable = true;
+    theme = "ElegantDark";
+    colorScheme = "custom";
+    enabledExtensions = with spicePkgs.extensions; [
+      fullAppDisplayMod
+      adblock
+      hidePodcasts
+      shuffle
+      playNext
+      playlistIcons
+      fullAlbumDate
+      volumePercentage
+    ];
+    enabledCustomApps = with spicePkgs.apps; [
+      lyricsPlus
+    ];
+  };
+
+  # Custom theme files
+  home.file.".config/spicetify/Themes/ElegantDark/color.ini".text = ''
     [custom]
     main = 1a1a1a          # Deep charcoal for main background
     sidebar = 2a2a3a       # Midnight blue-gray for sidebar
@@ -25,8 +45,9 @@ let
     misc = 1a1a1a         # Match main for miscellaneous
     progress-bar = 6b4e9a  # Purple for progress bar
     progress-bar-background = 3a3a4a # Gray for progress bar background
-    EOF
-    cat > $out/user.css <<EOF
+  '';
+
+  home.file.".config/spicetify/Themes/ElegantDark/user.css".text = ''
     :root {
         --spice-font: "JetBrainsMono Nerd Font Mono", monospace;
         --shadow-light: rgba(10, 10, 10, 0.3);
@@ -125,27 +146,5 @@ let
     ::-webkit-scrollbar-thumb:hover {
         background: #7b5eba;
     }
-    EOF
   '';
-in
-{
-  # Spicetify configuration using home.file
-  home.file.".config/spicetify/config-xpui.ini".text = ''
-    [Setting]
-    spotify_path            = ${pkgs.spotify}/share/spotify
-    prefs_path             = $HOME/.config/spotify/prefs
-    current_theme          = ElegantDark
-    color_scheme           = custom
-    inject_css             = 1
-    replace_colors         = 1
-    overwrite_assets       = 1
-
-    [AdditionalOptions]
-    extensions             = fullAppDisplayMod.js|adblock.js|hidePodcasts.js|shuffle.js|playNext.js|playlistIcons.js|fullAlbumDate.js|volumePercentage.js
-    custom_apps            = lyrics-plus
-  '';
-
-  # Theme files
-  home.file.".config/spicetify/Themes/ElegantDark/color.ini".source = "${themeDir}/color.ini";
-  home.file.".config/spicetify/Themes/ElegantDark/user.css".source = "${themeDir}/user.css";
 }

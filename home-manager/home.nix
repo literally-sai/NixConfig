@@ -14,7 +14,8 @@
     ./Hyprland/hyprpanel.nix
     ./Hyprland/hyprpaper.nix
     ./Hyprland/hyprshade.nix
-    ./Nixvim/nixvim.nix
+    ./Hyprland/pypr.nix
+    ./nixvim.nix
     ./ghostty.nix
     ./kitty.nix
     ./fastfetch.nix
@@ -24,8 +25,8 @@
     ./spicetify.nix
     ./stylix.nix
     ./git.nix
+    ./wlogout.nix
   ];
-  home.stateVersion = "24.11";
 
   nixpkgs = {
     config = {
@@ -44,7 +45,6 @@
       bat
       bitwarden-desktop
       black
-      brave
       ente-auth
       hyprpaper
       eza
@@ -85,7 +85,6 @@
       shfmt
       stylua
       wl-clipboard
-      ungoogled-chromium
       unzip
       webcord-vencord
       yamlfmt
@@ -97,6 +96,10 @@
 
   gtk = {
     enable = true;
+    theme = {
+      package = pkgs.materia-theme;
+      name = "Materia-light";
+    };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
@@ -105,6 +108,19 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    git = {
+      enable = true;
+      userEmail = "173792483+literally-sai@users.noreply.github.com";
+      userName = "literally-sai";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
+  };
+
   systemd.user.startServices = "sd-switch";
+
+  home.stateVersion = "24.11";
 }

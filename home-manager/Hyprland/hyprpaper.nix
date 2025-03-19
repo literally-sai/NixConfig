@@ -3,14 +3,17 @@
   pkgs,
   ...
 }:
+let
+  wallpapers_dir = "${config.home.homeDirectory}/wallpapers";
+in
 {
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    splash = false
-    preload = /home/sai/.home/imgs/wallpaper.png
-    wallpaper = ,/home/sai/.home/imgs/wallpaper.png
-  '';
   services.hyprpaper = {
     enable = true;
     package = pkgs.hyprpaper;
+    settings = {
+      splash = false;
+      preload = [ "${wallpapers_dir}/background.png" ];
+      wallpaper = [ ",${wallpapers_dir}/background.png" ];
+    };
   };
 }

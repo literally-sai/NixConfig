@@ -11,7 +11,11 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
-  nixpkgs.config.allowUnfree = true;
+
+  hardware = {
+    graphics.enable = true;
+    bluetooth.enable = true;
+  };
 
   boot = {
     loader = {
@@ -19,7 +23,15 @@
       efi.canTouchEfiVariables = true;
     };
   };
-  nix =
+
+  nixpkgs = {
+    overlays = [];
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  nix = 
     let
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
     in
@@ -37,12 +49,11 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
-  networking.hostName = "Ghylak";
+  networking.hostName = "Murgo";
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
@@ -54,9 +65,7 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
-  hardware = {
-    graphics.enable = true;
-  };
+
   services = {
     xserver.xkb = {
       layout = "us";
@@ -67,30 +76,34 @@
     gvfs.enable = true;
     pipewire = {
       enable = true;
+      alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-    };
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland";
-          user = "sai";
+      extraConfig.pipewire = {
+        "92-low-latency" = {
+          "context.properties" = {
+            "default.clock.rate" = 96000;
+            "default.clock.quantum" = 512;
+            "default.clock.min-quantum" = 512;
+            "default.clock.max-quantum" = 512;
+          };
         };
       };
     };
   };
 
-  users.users.sai = {
-    isNormalUser = true;
-    description = "Sai";
-    shell = pkgs.zsh;
-    extraGroups = [
-      "docker"
-      "networkmanager"
-      "wheel"
-    ];
+  users.users = {
+    sai = {
+      isNormalUser = true;
+      description = "Sai";
+      shell = pkgs.zsh;
+      extraGroups = [
+        "docker"
+        "networkmanager"
+        "wheel"
+      ];
+    };
   };
 
   programs = {
@@ -105,7 +118,6 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
   system.stateVersion = "24.11";
 }

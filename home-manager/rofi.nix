@@ -1,215 +1,114 @@
 {
-  config,
   pkgs,
+  config,
   ...
 }:
+let
+  dir = "${config.home.homeDirectory}";
+in
 {
   programs.rofi = {
     enable = true;
-    terminal = "${pkgs.kitty}/bin/kitty";
-    package = pkgs.rofi-wayland;
+    extraConfig = {
+      modi = "run,ssh,drun";
+      display-drun = " ";
+      icon-theme = "Papirus";
+      show-icons = true;
+    };
+    package = pkgs."rofi-wayland";
+
+    theme = "${dir}/home-manager/theme.rasi";
   };
-
   home.file.".config/rofi/theme.rasi".text = ''
-    configuration {
-    	modi:                       "drun,run,filebrowser,window";
-        show-icons:                 true;
-        display-drun:               "APPS";
-        display-run:                "RUN";
-        display-filebrowser:        "FILES";
-        display-window:             "WINDOWS";
-    	drun-display-format:        "{name}";
-    	window-format:              "{w} · {c}";
+      * {
+      black:      #000000;
+      red:        #eb6e67;
+      green:      #95ee8f;
+      yellow:     #f8c456;
+      blue:       #6eaafb;
+      mangenta:   #d886f3;
+      cyan:       #6cdcf7;
+      emphasis:   #f8c456;
+      text:       #dfdfdf;
+      text-alt:   #b2b2b2;
+      fg:         #abb2bf;
+      bg:         #282c34;
+
+      spacing: 0;
+      background-color: transparent;
+
+      font: "JetBrains Mono Nerd Font 14";
+      text-color: @text;
     }
 
-    /*****----- Global Properties -----*****/
-    * {
-        font:                        "JetBrains Mono Nerd Font 10";
-        background:                  #D0D0D0;
-        background-alt:              #E9E9E9;
-        foreground:                  #161616;
-        selected:                    #BEBEBE;
-        active:                      #999999;
-        urgent:                      #808080;
-    }
-
-    /*****----- Main Window -----*****/
     window {
-        /* properties for window widget */
-        transparency:                "real";
-        location:                    center;
-        anchor:                      center;
-        fullscreen:                  false;
-        width:                       1000px;
-        x-offset:                    0px;
-        y-offset:                    0px;
-
-        /* properties for all widgets */
-        enabled:                     true;
-        border-radius:               15px;
-        cursor:                      "default";
-        background-color:            @background;
+      transparency: "real";
+      fullscreen: true;
+      background-color: rgba(40, 44, 52, 0.75); /* Slightly darker than original for contrast */
     }
 
-    /*****----- Main Box -----*****/
     mainbox {
-        enabled:                     true;
-        spacing:                     0px;
-        background-color:            transparent;
-        orientation:                 vertical;
-        children:                    [ "inputbar", "listbox" ];
+      padding: 30% 30%;
     }
 
-    listbox {
-        spacing:                     20px;
-        padding:                     20px;
-        background-color:            transparent;
-        orientation:                 vertical;
-        children:                    [ "message", "listview" ];
-    }
-
-    /*****----- Inputbar -----*****/
     inputbar {
-        enabled:                     true;
-        spacing:                     10px;
-        padding:                     100px 60px;
-        background-color:            transparent;
-        background-image:            url("~/.home/imgs/wallpaper.png", width);
-        text-color:                  @foreground;
-        orientation:                 horizontal;
-        children:                    [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
+      margin: 0px 0px 20px 0px;
+      children: [prompt, textbox-prompt-colon, entry, case-indicator];
     }
+
+    prompt {
+      text-color: @yellow;
+    }
+
     textbox-prompt-colon {
-        enabled:                     true;
-        expand:                      false;
-        str:                         "";
-        padding:                     12px 15px;
-        border-radius:               100%;
-        background-color:            @background-alt;
-        text-color:                  inherit;
+      expand: false;
+      str: ":";
+      text-color: @text-alt;
     }
+
     entry {
-        enabled:                     true;
-        expand:                      false;
-        width:                       300px;
-        padding:                     12px 16px;
-        border-radius:               100%;
-        background-color:            @background-alt;
-        text-color:                  inherit;
-        cursor:                      text;
-        placeholder:                 "Search";
-        placeholder-color:           inherit;
-    }
-    dummy {
-        expand:                      true;
-        background-color:            transparent;
+      margin: 0px 10px;
     }
 
-    /*****----- Mode Switcher -----*****/
-    mode-switcher{
-        enabled:                     true;
-        spacing:                     10px;
-        background-color:            transparent;
-        text-color:                  @foreground;
-    }
-    button {
-        width:                       80px;
-        padding:                     12px;
-        border-radius:               100%;
-        background-color:            @background-alt;
-        text-color:                  inherit;
-        cursor:                      pointer;
-    }
-    button selected {
-        background-color:            @selected;
-        text-color:                  @foreground;
-    }
-
-    /*****----- Listview -----*****/
     listview {
-        enabled:                     true;
-        columns:                     6;
-        lines:                       3;
-        cycle:                       true;
-        dynamic:                     true;
-        scrollbar:                   false;
-        layout:                      vertical;
-        reverse:                     false;
-        fixed-height:                true;
-        fixed-columns:               true;
-
-        spacing:                     10px;
-        background-color:            transparent;
-        text-color:                  @foreground;
-        cursor:                      "default";
+      spacing: 3px;
+      columns: 1;
+      lines: 5;
+      scrollbar: false;
     }
 
-    /*****----- Elements -----*****/
     element {
-        enabled:                     true;
-        spacing:                     10px;
-        padding:                     10px;
-        border-radius:               15px;
-        background-color:            transparent;
-        text-color:                  @foreground;
-        cursor:                      pointer;
-        orientation:                 vertical;
-    }
-    element normal.normal {
-        background-color:            inherit;
-        text-color:                  inherit;
-    }
-    element normal.urgent {
-        background-color:            @urgent;
-        text-color:                  @foreground;
-    }
-    element normal.active {
-        background-color:            @active;
-        text-color:                  @foreground;
-    }
-    element selected.normal {
-        background-color:            @selected;
-        text-color:                  @foreground;
-    }
-    element selected.urgent {
-        background-color:            @urgent;
-        text-color:                  @foreground;
-    }
-    element selected.active {
-        background-color:            @urgent;
-        text-color:                  @foreground;
-    }
-    element-icon {
-        background-color:            transparent;
-        text-color:                  inherit;
-        size:                        64px;
-        cursor:                      inherit;
-    }
-    element-text {
-        background-color:            transparent;
-        text-color:                  inherit;
-        cursor:                      inherit;
-        vertical-align:              0.5;
-        horizontal-align:            0.5;
+      padding: 5px;
+      text-color: @text-alt;
+      highlight: bold @yellow;
+      border-radius: 3px;
     }
 
-    /*****----- Message -----*****/
+    element selected {
+      background-color: @emphasis;
+      text-color: @text;
+    }
+
+    element urgent, element selected urgent {
+      text-color: @red;
+    }
+
+    element active, element selected active {
+      text-color: @red;
+    }
+
     message {
-        background-color:            transparent;
+      padding: 5px;
+      border-radius: 3px;
+      background-color: @emphasis;
+      border: 1px;
+      border-color: @cyan;
     }
-    textbox {
-        padding:                     15px;
-        border-radius:               15px;
-        background-color:            @background-alt;
-        text-color:                  @foreground;
-        vertical-align:              0.5;
-        horizontal-align:            0.0;
-    }
-    error-message {
-        padding:                     15px;
-        border-radius:               15px;
-        background-color:            @background;
-        text-color:                  @foreground;
+
+    button selected {
+      padding: 5px;
+      border-radius: 3px;
+      background-color: @emphasis;
     }
   '';
 }
