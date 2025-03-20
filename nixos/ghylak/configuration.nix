@@ -28,7 +28,7 @@
   nixpkgs = {
     overlays = [ ];
     config = {
-      allowUnfree = true;
+      allowUnfree = true; # Steam's unfree predicate will be handled in steam.nix
     };
   };
 
@@ -68,10 +68,6 @@
   };
 
   services = {
-    xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
     pulseaudio.enable = false;
     gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
@@ -100,7 +96,6 @@
       description = "Sai";
       shell = pkgs.zsh;
       extraGroups = [
-        "docker"
         "networkmanager"
         "wheel"
       ];

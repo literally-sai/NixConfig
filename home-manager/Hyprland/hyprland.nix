@@ -15,9 +15,7 @@
       exec-once = [
         "${pkgs.hyprpaper}/bin/hyprpaper"
         "${pkgs.hyprpanel}/bin/hyprpanel"
-        "pypr"
         "${pkgs.hyprshade}/bin/hyprshade on vibrance"
-        "solaar"
         "${pkgs.hypridle}/bin/hypridle"
       ];
 

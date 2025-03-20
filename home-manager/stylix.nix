@@ -1,9 +1,13 @@
-{ self, pkgs, config, ... }:
+{
+  self,
+  pkgs,
+  config,
+  ...
+}:
 {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-    image = "${self}/resources/background.png";  # Use self for flake root
     targets = {
       gtk.enable = true;
       rofi.enable = false;
@@ -33,3 +37,4 @@
     polarity = "dark";
   };
 }
+

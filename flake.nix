@@ -15,6 +15,7 @@
     stylix.url = "github:danth/stylix";
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs = 
@@ -27,6 +28,7 @@
       nixvim,
       spicetify-nix,
       hyprpanel,
+      hyprland,
       ...
     }@inputs:
     let
@@ -37,7 +39,13 @@
         Ghylak = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs self; };
           modules = [
-            ./nixos/ghylak/configuration.nix
+            ./nixos/ghylak/configuration.nix  # Corrected path
+            ./modules/greetd.nix             # Adjusted path (assuming modules is at root)
+            ./modules/steam.nix              # Adjusted path
+            ./modules/virtualization.nix     # Adjusted path (corrected typo from 'virtualisation')
+            hyprland.nixosModules.default    # Enable Hyprland module
+            { programs.hyprland.enable = true; } # Enable Hyprland
+            home-manager.nixosModules.home-manager
           ];
         };
         Murgo = nixpkgs.lib.nixosSystem {
