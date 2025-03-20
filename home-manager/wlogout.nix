@@ -42,7 +42,7 @@ in
       window {
         font-family: JetBrains Mono Nerd Font;
         font-size: 14pt;
-        color: #ffffff; /* text */
+        color: #ffffff;
         background-color: rgba(46, 52, 64, 0.8);
       }
 

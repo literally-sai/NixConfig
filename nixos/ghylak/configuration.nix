@@ -28,7 +28,7 @@
   nixpkgs = {
     overlays = [ ];
     config = {
-      allowUnfree = true; # Steam's unfree predicate will be handled in steam.nix
+      allowUnfree = true;
     };
   };
 

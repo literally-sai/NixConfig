@@ -9,25 +9,25 @@ let
       mkdir -p $out/Themes/ElegantDark
       cat > $out/Themes/ElegantDark/color.ini <<EOF
       [custom]
-      main = 1a1a1a          # Deep charcoal for main background
-      sidebar = 2a2a3a       # Midnight blue-gray for sidebar
-      player = 1a1a1a        # Match main background for player
-      card = 3a3a4a         # Slightly lighter gray for cards
-      shadow = 0a0a0a        # Near-black for shadows
-      selected = 6b4e9a      # Rich purple for selections
-      text = e8e8e8         # Soft white for primary text
-      subtext = 8a8a9a       # Muted silver for secondary text
-      highlight = b89a4a     # Muted gold for highlights
-      highlight-elevated = 6b4e9a  # Purple for elevated highlights
-      button = b89a4a        # Gold for buttons
-      button-active = 6b4e9a # Purple for active buttons
-      button-disabled = 4a4a5a # Dim gray for disabled buttons
-      tab-active = 3a3a4a    # Match card color for active tabs
-      notification = b89a4a  # Gold for notifications
-      notification-error = 9a4e4e # Muted red for errors
-      misc = 1a1a1a         # Match main for miscellaneous
-      progress-bar = 6b4e9a  # Purple for progress bar
-      progress-bar-background = 3a3a4a # Gray for progress bar background
+      main = 1a1a1a
+      sidebar = 2a2a3a
+      player = 1a1a1a
+      card = 3a3a4a
+      shadow = 0a0a0a
+      selected = 6b4e9a
+      text = e8e8e8
+      subtext = 8a8a9a
+      highlight = b89a4a
+      highlight-elevated = 6b4e9a
+      button = b89a4a
+      button-active = 6b4e9a
+      button-disabled = 4a4a5a
+      tab-active = 3a3a4a
+      notification = b89a4a
+      notification-error = 9a4e4e
+      misc = 1a1a1a
+      progress-bar = 6b4e9a
+      progress-bar-background = 3a3a4a
       EOF
       cat > $out/Themes/ElegantDark/user.css <<EOF
       :root {

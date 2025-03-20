@@ -11,6 +11,7 @@
     quickemu
     spice-gtk
     virt-manager
+    docker-compose
   ];
 
   virtualisation.docker = {
@@ -20,8 +21,5 @@
       setSocketVariable = true;
     };
   };
-  environment.systemPackages = with pkgs; [
-    docker-compose
-  ];
   users.extraGroups.docker.members = ["sai"];
 }

@@ -11,7 +11,7 @@ in {
     settings = {
       initial_session = {
         command = "${session}";
-        user = "sai"; # Your username
+        user = "sai";
       };
       default_session = {
         command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time --cmd dbus-run-session ${session}";
