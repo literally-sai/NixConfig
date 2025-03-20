@@ -18,7 +18,7 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
-  outputs = 
+  outputs =
     {
       self,
       nixpkgs,
@@ -52,8 +52,15 @@
           specialArgs = { inherit inputs outputs self; };
           modules = [
             ./nixos/murgo/configuration.nix
+            ./modules/greetd.nix
+            ./modules/steam.nix
+            ./modules/virt.nix
+            hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
+            home-manager.nixosModules.home-manager
           ];
         };
       };
     };
 }
+
