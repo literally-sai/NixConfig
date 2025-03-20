@@ -13,6 +13,7 @@
       "$MOD" = "SUPER";
 
       exec-once = [
+        "${pkgs.hyprlock}/bin/hyprlock"
         "${pkgs.hyprpaper}/bin/hyprpaper"
         "${pkgs.hyprpanel}/bin/hyprpanel"
         "${pkgs.hyprshade}/bin/hyprshade on vibrance"
