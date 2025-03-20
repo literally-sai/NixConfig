@@ -48,6 +48,7 @@
       hyprpaper
       eza
       file-roller
+      blender
       firefox
       gcc
       hclfmt
