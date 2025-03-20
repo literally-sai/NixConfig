@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   outputs,
   lib,
@@ -25,13 +26,13 @@
   };
 
   nixpkgs = {
-    overlays = [];
+    overlays = [ ];
     config = {
       allowUnfree = true;
     };
   };
 
-  nix = 
+  nix =
     let
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
     in
@@ -49,7 +50,7 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
-  networking.hostName = "Murgo";
+  networking.hostName = "Ghylak";
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
 
@@ -67,10 +68,6 @@
   };
 
   services = {
-    xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
     pulseaudio.enable = false;
     gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
@@ -99,7 +96,6 @@
       description = "Sai";
       shell = pkgs.zsh;
       extraGroups = [
-        "docker"
         "networkmanager"
         "wheel"
       ];
@@ -112,7 +108,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs self; };
     users = {
       sai = import ../../home-manager/home.nix;
     };
