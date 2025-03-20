@@ -39,12 +39,12 @@
         Ghylak = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs self; };
           modules = [
-            ./nixos/ghylak/configuration.nix  # Corrected path
-            ./modules/greetd.nix             # Adjusted path (assuming modules is at root)
-            ./modules/steam.nix              # Adjusted path
-            ./modules/virtualization.nix     # Adjusted path (corrected typo from 'virtualisation')
-            hyprland.nixosModules.default    # Enable Hyprland module
-            { programs.hyprland.enable = true; } # Enable Hyprland
+            ./nixos/ghylak/configuration.nix
+            ./modules/greetd.nix
+            ./modules/steam.nix
+            ./modules/virt.nix
+            hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
             home-manager.nixosModules.home-manager
           ];
         };
