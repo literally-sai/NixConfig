@@ -78,6 +78,7 @@
       roboto
       rubik
       rust-bin.nightly.latest.default
+      go
       vscode
       tree
       discord
