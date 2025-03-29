@@ -46,6 +46,7 @@
       black
       ente-auth
       hyprpaper
+      golangci-lint
       eza
       file-roller
       blender

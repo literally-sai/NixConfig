@@ -31,7 +31,6 @@ in
     };
     initExtra = ''
       PROMPT='%F{yellow}  %1~%f %F{green}>%f '
-      fastfetch
       export EDITOR='nvim'
       export TERMINAL='${pkgs.kitty}/bin/kitty'
       export BROWSER='${pkgs.firefox}/bin/firefox'
@@ -39,3 +38,4 @@ in
     '';
   };
 }
+
