@@ -77,6 +77,7 @@
           "$MOD, C, killactive,"
           "$MOD, W, exec, $terminal -e nvim"
           "$MOD, E, exec, $menu"
+          "$MOD, U, exec, hyprlock"
 
           "$MOD, V, fullscreen,"
           "$MOD SHIFT, V, togglefloating,"

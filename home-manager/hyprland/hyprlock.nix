@@ -9,7 +9,7 @@
       };
       background = {
         monitor = "";
-        path = "${config.home.homeDirectory}/.flake/resources/hyprlock.png";
+        path = "${config.home.homeDirectory}/.flake/resources/hyprlock.jpeg";
         color = "rgba(25, 20, 20, 1.0)";
       };
       input-field = {

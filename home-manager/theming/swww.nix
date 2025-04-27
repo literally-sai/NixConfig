@@ -3,6 +3,6 @@
 {
   swww = {
     enable = true;
-    wallpaper = "${config.home.homeDirectory}/.flake/resources/background.png";
+    wallpaper = "${config.home.homeDirectory}/.flake/resources/wallpaper.jpeg";
   };
 }
