@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 {
   programs.hyprlock = {
     enable = true;
@@ -9,7 +9,7 @@
       };
       background = {
         monitor = "";
-        path = "${config.home.homeDirectory}/.flake/resources/background.png";
+        path = "${config.home.homeDirectory}/.flake/resources/hyprlock.png";
         color = "rgba(25, 20, 20, 1.0)";
       };
       input-field = {

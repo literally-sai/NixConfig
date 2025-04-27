@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -7,25 +10,19 @@
     };
     settings = {
       "$terminal" = "${pkgs.kitty}/bin/kitty";
-      "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
       "$menu" = "${pkgs.rofi-wayland}/bin/rofi -show drun";
-      "$cliFM" = "$terminal -e ${pkgs.yazi}/bin/yazi";
       "$MOD" = "SUPER";
 
       exec-once = [
-        "${pkgs.hyprlock}/bin/hyprlock"
-        "${pkgs.hyprpaper}/bin/hyprpaper"
-        "${pkgs.hyprpanel}/bin/hyprpanel"
-        "${pkgs.hyprshade}/bin/hyprshade on vibrance"
+        "${pkgs.swww}/bin/swww"
         "${pkgs.hypridle}/bin/hypridle"
+        "${pkgs.hyprpanel}/bin/hyprpanel"
       ];
 
-      monitor = ",preferred,auto,auto";
-
       general = {
-        gaps_in = 2;
-        gaps_out = 10;
-        border_size = 2;
+        gaps_in = 1;
+        gaps_out = 6;
+        border_size = 1;
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
@@ -69,6 +66,9 @@
         touchpad = {
           natural_scroll = false;
         };
+        tablet = {
+          output = "DP-2";
+        };
       };
 
       bind =
@@ -76,29 +76,37 @@
           "$MOD, Q, exec, $terminal"
           "$MOD, C, killactive,"
           "$MOD, W, exec, $terminal -e nvim"
-          "$MOD, V, fullscreen,"
-          "$MOD ALT, V, togglefloating,"
-          "$MOD SHIFT, V, exec, pypr toggle term && hyprctl dispatch bringactivetotop"
-          "$MOD SHIFT, U, exec, hyprlock"
           "$MOD, E, exec, $menu"
-          "$MOD, R, exec, $cliFM"
-          "$MOD, Shift Space, togglesplit,"
+
+          "$MOD, V, fullscreen,"
+          "$MOD SHIFT, V, togglefloating,"
+
           "$MOD, H, movefocus, l"
           "$MOD, L, movefocus, r"
           "$MOD, J, movefocus, d"
           "$MOD, K, movefocus, u"
+
           "$MOD Shift, H, movewindow, l"
           "$MOD Shift, L, movewindow, r"
           "$MOD Shift, J, movewindow, d"
           "$MOD Shift, K, movewindow, u"
+
           "$MOD ALT, H, resizeactive, 20 0"
           "$MOD ALT, L, resizeactive, -20 0"
           "$MOD ALT, J, resizeactive, 0 -20"
           "$MOD ALT, K, resizeactive, 0 20"
-          "$MOD, P, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%+"
-          "$MOD, O, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%-"
+
+          "$MOD, P, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+"
+          "$MOD, O, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
+
           "$MOD SHIFT, P, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 100%"
           "$MOD SHIFT, O, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%"
+
+          "$MOD, L, exec, hyprlock"
+          "$MOD SHIFT, L, exec, wlogout"
+
+          "$MOD, S, exec, grim -g \"$(slurp -f)\" ~/Downloads/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
+          "$MOD SHIFT, S, exec, grim -g \"$(slurp)\" ~/Downloads/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
         ]
         ++ (builtins.concatLists (
           builtins.genList (
@@ -112,7 +120,6 @@
             ]
           ) 9
         ));
-
       bindm = [
         "$MOD, mouse:272, movewindow"
         "$MOD, mouse:273, resizewindow"

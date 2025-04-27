@@ -1,30 +1,20 @@
 {
+  lib,
+  config,
   inputs,
   pkgs,
   ...
 }:
 {
   imports = [
-    inputs.spicetify-nix.homeManagerModules.default
+    ./hyprland
+    ./editors
+    ./shell
+    ./theming
+    inputs.spicetify.homeManagerModules.default
     inputs.stylix.homeManagerModules.stylix
     inputs.nixvim.homeManagerModules.nixvim
-    ./Hyprland/hypridle.nix
-    ./Hyprland/hyprland.nix
-    ./Hyprland/hyprlock.nix
-    ./Hyprland/hyprpanel.nix
-    ./Hyprland/hyprpaper.nix
-    ./Hyprland/hyprshade.nix
-    ./Hyprland/pypr.nix
-    ./nixvim.nix
-    ./ghostty.nix
-    ./kitty.nix
-    ./fastfetch.nix
-    ./rofi.nix
-    ./fzf.nix
-    ./zsh.nix
-    ./spicetify.nix
-    ./stylix.nix
-    ./wlogout.nix
+    inputs.hyprpanel.homeManagerModules.hyprpanel
   ];
 
   nixpkgs = {
@@ -34,83 +24,106 @@
     };
     overlays = [
       inputs.rust-overlay.overlays.default
-    ];
+    ] ++ (lib.optionals config.stylix.overlays.enable [ inputs.stylix.overlays.default ]);
   };
 
   home = {
     username = "sai";
     homeDirectory = "/home/sai";
+    stateVersion = "24.11";
     packages = with pkgs; [
+      # cli
       bat
-      bitwarden-desktop
-      black
-      ente-auth
-      hyprpaper
-      golangci-lint
       eza
-      file-roller
-      blender
-      firefox
-      gcc
-      hclfmt
-      hyprshade
-      lexend
-      material-design-icons
-      markdownlint-cli
-      nodejs_23
+      tree
+      unzip
+      zip
+      yazi
       fastfetch
-      nerd-fonts.fira-code
-      nerd-fonts.iosevka
-      nerd-fonts.jetbrains-mono
+
+      # dev
+      gcc
+      go
+      nodejs_23
+      rust-bin.nightly.latest.default
+      golangci-lint
+      black
+      hclfmt
+      markdownlint-cli
       nixfmt-rfc-style
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
+      prettierd
+      shfmt
+      stylua
+      yamlfmt
+      premake5
+
+      # editors
+      vscode
       obsidian
+      zathura
+
+      # web
+      firefox
+
+      # com
+      discord
+      webcord-vencord
+
+      # files
+      file-roller
+      nautilus
+      ranger
+
+      # media
+      obs-studio
+      blender
       pamixer
       pavucontrol
       playerctl
-      prettierd
-      kitty
-      protonmail-desktop
       pulsemixer
-      pyprland
-      rclone
+      wireplumber
+
+      # terminal
+      kitty
+      ghostty
+      tmux
+
+      # hypr
+      hyprland
+      hyprpanel
+      hypridle
+      hyprlock
+      swww
+
+      # fonts
+      lexend
       roboto
       rubik
-      rust-bin.nightly.latest.default
-      go
-      vscode
-      tree
-      discord
-      zathura
-      shfmt
-      stylua
-      wl-clipboard
-      unzip
-      webcord-vencord
-      yamlfmt
-      yazi
-      zip
+      material-design-icons
+      nerd-fonts.fira-code
+      nerd-fonts.iosevka
+      nerd-fonts.jetbrains-mono
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
       papirus-icon-theme
+
+      # sys utils
+      openssl
+      openvpn
+      git
+      bluez
+      bluez-utils
+      networkmanager
+      dart-sass
+      gvfs
+      libgtop
+      upower
+      usbutils
+      wl-clipboard
+      aylurs-gtk-shell-git
+      slurp
+      grim
     ];
   };
-
-  fonts.fontconfig.enable = true;
-
-  programs = {
-    home-manager.enable = true;
-    git = {
-      enable = true;
-      userEmail = "173792483+literally-sai@users.noreply.github.com";
-      userName = "literally-sai";
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-    };
-  };
-
-  systemd.user.startServices = "sd-switch";
-
-  home.stateVersion = "24.11";
 }

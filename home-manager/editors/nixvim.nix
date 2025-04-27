@@ -1,6 +1,4 @@
 {
-  pkgs,
-  config,
   ...
 }:
 {
@@ -8,14 +6,14 @@
     enable = true;
     defaultEditor = true;
 
-    # Global variables
+    # globals
     globals = {
       mapleader = " ";
       maplocalleader = " ";
       have_nerd_font = true;
     };
 
-    # Neovim options
+    # options
     opts = {
       number = true;
       relativenumber = true;
@@ -63,7 +61,7 @@
       termguicolors = true;
     };
 
-    # Colorscheme
+    # colors
     colorscheme = "cyberdream";
 
     colorschemes = {
@@ -86,7 +84,7 @@
       vscode.enable = true;
     };
 
-    # Plugins
+    # plugins
     plugins = {
       "web-devicons".enable = true;
 
@@ -118,7 +116,7 @@
           };
           gopls = {
             enable = true;
-          }; # Added from file2
+          };
         };
         keymaps = {
           silent = true;
@@ -287,7 +285,7 @@
             cpp = [ "clang-format" ];
             c = [ "clang-format" ];
             sql = [ "sqlfmt" ];
-            go = [ "gofmt" ]; # Added from file2
+            go = [ "gofmt" ];
           };
         };
       };
@@ -299,7 +297,7 @@
           javascript = [ "eslint" ];
           typescript = [ "eslint" ];
           cpp = [ "cpplint" ];
-          go = [ "golangci-lint" ]; # Added from file2
+          go = [ "golangci-lint" ];
         };
         autoCmd = {
           callback.__raw = ''
@@ -356,7 +354,7 @@
           "cpp"
           "c"
           "sql"
-          "go" # Added from file2
+          "go"
         ];
       };
 
@@ -367,7 +365,6 @@
       gitsigns.enable = true;
 
       toggleterm = {
-        # Added from file2
         enable = true;
         settings = {
           direction = "float";
@@ -376,7 +373,7 @@
       };
     };
 
-    # Key mappings
+    # keys
     keymaps = [
       {
         mode = [
@@ -456,7 +453,7 @@
       }
     ];
 
-    # Extra Lua configuration
+    # extra configs
     extraConfigLua = ''
       local _border = "rounded"
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = _border })
@@ -500,4 +497,3 @@
     '';
   };
 }
-

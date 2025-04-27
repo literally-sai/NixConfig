@@ -1,15 +1,15 @@
-{lib, ...}: {
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-run"
-      "steam-runtime"
-    ];
-
+{ pkgs, ... }:
+{
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+
+  users.extraGroups.steam.members = [ "sai" ];
+
+  environment.systemPackages = with pkgs; [
+    steam
+    steam-run
+  ];
 }

@@ -1,21 +1,36 @@
 {
-  description = "Banger Nix Config";
+  description = "My NixConfig";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    hyprpanel.url = "github:jas-singhfsu/hyprpanel";
-    hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprpanel = {
+      url = "github:jas-singhfsu/hyprpanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland.url = "github:hyprwm/Hyprland";
     stylix.url = "github:danth/stylix";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs =
@@ -24,43 +39,36 @@
       nixpkgs,
       home-manager,
       stylix,
-      rust-overlay,
       nixvim,
-      spicetify-nix,
+      rust-overlay,
       hyprpanel,
       hyprland,
+      spicetify,
       ...
     }@inputs:
     let
       inherit (self) outputs;
+      system = "x86_64-linux";
     in
     {
       nixosConfigurations = {
         Ghylak = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs self; };
           modules = [
+            ./nixos/common.nix
             ./nixos/ghylak/configuration.nix
-            ./modules/greetd.nix
-            ./modules/steam.nix
-            ./modules/virt.nix
-            hyprland.nixosModules.default
-            { programs.hyprland.enable = true; }
-            home-manager.nixosModules.home-manager
+            ./modules
           ];
         };
+
         Murgo = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs self; };
           modules = [
+            ./nixos/common.nix
             ./nixos/murgo/configuration.nix
-            ./modules/greetd.nix
-            ./modules/steam.nix
-            ./modules/virt.nix
-            hyprland.nixosModules.default
-            { programs.hyprland.enable = true; }
-            home-manager.nixosModules.home-manager
+            ./modules
           ];
         };
       };
     };
 }
-

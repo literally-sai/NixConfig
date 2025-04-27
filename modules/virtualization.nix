@@ -1,10 +1,17 @@
 {
   pkgs,
-  config,
   ...
-}: {
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = ["sai"];
+}:
+{
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu;
+      runAsRoot = false;
+    };
+  };
+
+  users.extraGroups.libvirtd.members = [ "sai" ];
 
   environment.systemPackages = with pkgs; [
     qemu
@@ -21,5 +28,5 @@
       setSocketVariable = true;
     };
   };
-  users.extraGroups.docker.members = ["sai"];
+  users.extraGroups.docker.members = [ "sai" ];
 }
