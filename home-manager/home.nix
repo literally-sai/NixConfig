@@ -122,6 +122,7 @@
       usbutils
       wl-clipboard
       aylurs-gtk-shell-git
+      nmcli
       slurp
       grim
     ];
