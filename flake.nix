@@ -37,7 +37,6 @@
       hyprpanel,
       hyprland,
       spicetify,
-      sddm-sugar-candy-nix,
       ...
     }@inputs:
     let
@@ -59,8 +58,6 @@
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.sai = import ./home-manager/home.nix;
             }
-
-            sddm-sugar-candy-nix.nixosModules.default
           ];
         };
         Murgo = nixpkgs.lib.nixosSystem {
