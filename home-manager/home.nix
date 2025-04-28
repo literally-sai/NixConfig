@@ -20,7 +20,6 @@
     };
     overlays = [
       inputs.rust-overlay.overlays.default
-      inputs.sddm-sugar-candy-nix.overlays.default
     ];
   };
 
@@ -110,7 +109,6 @@
       openvpn
       git
       bluez
-      home-manager
       bluez-tools
       bluez-alsa
       networkmanager
@@ -122,6 +120,14 @@
       wl-clipboard
       slurp
       grim
+
+      # nix
+      nix-prefetch
+      home-manager
     ];
   };
+
+  qt.enable = true;
+  qt.platformTheme = "gtk";
+  qt.style.name = "adwaita-dark";
 }
