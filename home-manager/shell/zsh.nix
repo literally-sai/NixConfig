@@ -29,7 +29,7 @@ in
       gpl = "git pull";
       gs = "git status";
     };
-    initExtra = ''
+    initContent = ''
       PROMPT='%F{yellow}  %1~%f %F{green}>%f '
       export EDITOR='nvim'
       export TERMINAL='${pkgs.kitty}/bin/kitty'

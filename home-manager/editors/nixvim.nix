@@ -13,6 +13,14 @@
       have_nerd_font = true;
     };
 
+    clipboard = {
+      providers = {
+        "wl-copy".enable = true;
+        xsel.enable = true;
+      };
+      register = "unnamedplus";
+    };
+
     # options
     opts = {
       number = true;
@@ -22,13 +30,6 @@
       showtabline = 2;
       expandtab = true;
       showmode = false;
-      clipboard = {
-        providers = {
-          "wl-copy".enable = true;
-          xsel.enable = true;
-        };
-        register = "unnamedplus";
-      };
       smartindent = true;
       shiftwidth = 2;
       breakindent = true;

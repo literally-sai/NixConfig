@@ -4,13 +4,15 @@
   ...
 }:
 let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = inputs.spicetify.legacyPackages.${pkgs.system};
 in
 {
+  imports = [ inputs.spicetify.homeManagerModules.default ];
+
   programs.spicetify = {
     enable = true;
     theme = spicePkgs.themes.starryNight;
-    colorScheme = "forest";
+    colorScheme = "Cotton-candy";
     spicetifyPackage = pkgs.spicetify-cli;
     enabledExtensions = with spicePkgs.extensions; [
       adblock
@@ -26,10 +28,6 @@ in
       bookmark
       autoSkipVideo
       beautifulLyrics
-    ];
-    enabledCustomApps = with spicePkgs.apps; [
-      lyricsPlus
-      spicetifyMarketplace
     ];
   };
 }

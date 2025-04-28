@@ -1,14 +1,11 @@
 {
   inputs,
-  lib,
   pkgs,
-  config,
   ...
 }:
 {
   imports = [
     ./../modules
-    inputs.home-manager.nixosModules.home-manager
   ];
 
   hardware = {
@@ -24,7 +21,6 @@
   };
 
   nixpkgs = {
-    overlays = [ ];
     config = {
       allowunfree = true;
       allowUnfreePredicate =
@@ -38,23 +34,12 @@
     };
   };
 
-  nix =
-    let
-      flakeinputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in
-    {
-      settings = {
-        experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
-        flake-registry = "";
-        nix-path = config.nix.nixPath;
-      };
-      channel.enable = false;
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeinputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeinputs;
-    };
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   time.timeZone = "europe/berlin";
 
@@ -111,8 +96,10 @@
   environment.systemPackages = with pkgs; [
     kdePackages.sddm
     git
-    sddm-sugar-dark
+    networkmanager
   ];
+
+  networking.networkmanager.enable = true;
 
   programs = {
     hyprland = {

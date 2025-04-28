@@ -43,13 +43,14 @@ in
 
     /*****----- Global Properties -----*****/
     * {
-        font:                        "JetBrains Mono Nerd Font 10";
-        background:                  #D0D0D0;
-        background-alt:              #E9E9E9;
-        foreground:                  #161616;
-        selected:                    #BEBEBE;
-        active:                      #999999;
-        urgent:                      #808080;
+    font:                        "JetBrains Mono Nerd Font 10";
+    background:                  #1C1B23;
+    background-alt:              #D7C7B2;
+    foreground:                  #d13636;
+    selected:                    #352833;
+    active:                      #B47E5C;
+    urgent:                      #593B45;
+
     }
 
     /*****----- Main Window -----*****/
@@ -82,7 +83,7 @@ in
     imagebox {
         padding:                     20px;
         background-color:            transparent;
-        background-image:            url("~/.flake/rofi.png", height);
+        background-image:            url(".flake/resources/wallpaper.jpeg", height);
         orientation:                 vertical;
         children:                    [ "inputbar", "dummy", "mode-switcher" ];
     }

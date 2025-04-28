@@ -1,6 +1,4 @@
 {
-  lib,
-  config,
   inputs,
   pkgs,
   ...
@@ -11,10 +9,8 @@
     ./editors
     ./shell
     ./theming
-    inputs.spicetify.homeManagerModules.default
-    inputs.stylix.homeManagerModules.stylix
+    ./terminal
     inputs.nixvim.homeManagerModules.nixvim
-    inputs.hyprpanel.homeManagerModules.hyprpanel
   ];
 
   nixpkgs = {
@@ -24,7 +20,8 @@
     };
     overlays = [
       inputs.rust-overlay.overlays.default
-    ] ++ (lib.optionals config.stylix.overlays.enable [ inputs.stylix.overlays.default ]);
+      inputs.sddm-sugar-candy-nix.overlays.default
+    ];
   };
 
   home = {
@@ -43,13 +40,14 @@
 
       # dev
       gcc
+      rustup
       go
       nodejs_23
-      rust-bin.nightly.latest.default
       golangci-lint
       black
       hclfmt
       markdownlint-cli
+      rusty-man
       nixfmt-rfc-style
       prettierd
       shfmt
@@ -84,13 +82,12 @@
       wireplumber
 
       # terminal
-      kitty
       ghostty
       tmux
+      kitty
 
       # hypr
       hyprland
-      hyprpanel
       hypridle
       hyprlock
       swww
@@ -113,7 +110,9 @@
       openvpn
       git
       bluez
-      bluez-utils
+      home-manager
+      bluez-tools
+      bluez-alsa
       networkmanager
       dart-sass
       gvfs
@@ -121,8 +120,6 @@
       upower
       usbutils
       wl-clipboard
-      aylurs-gtk-shell-git
-      nmcli
       slurp
       grim
     ];

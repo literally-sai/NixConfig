@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -14,9 +15,9 @@
       "$MOD" = "SUPER";
 
       exec-once = [
-        "${pkgs.swww}/bin/swww"
-        "${pkgs.hypridle}/bin/hypridle"
-        "${pkgs.hyprpanel}/bin/hyprpanel"
+        "swww init && swww img ${config.home.homeDirectory}/.flake/resources/wallpaper.jpeg"
+        "hypridle"
+        "hyprpanel"
       ];
 
       general = {
@@ -77,7 +78,8 @@
           "$MOD, C, killactive,"
           "$MOD, W, exec, $terminal -e nvim"
           "$MOD, E, exec, $menu"
-          "$MOD, U, exec, hyprlock"
+          "$MOD, U, exec, wlogout"
+          "$MOD SHIFT, U, exec, hyprlock"
 
           "$MOD, V, fullscreen,"
           "$MOD SHIFT, V, togglefloating,"
@@ -102,9 +104,6 @@
 
           "$MOD SHIFT, P, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 100%"
           "$MOD SHIFT, O, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%"
-
-          "$MOD, L, exec, hyprlock"
-          "$MOD SHIFT, L, exec, wlogout"
 
           "$MOD, S, exec, grim -g \"$(slurp -f)\" ~/Downloads/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
           "$MOD SHIFT, S, exec, grim -g \"$(slurp)\" ~/Downloads/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
