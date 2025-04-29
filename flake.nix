@@ -42,6 +42,7 @@
     let
       inherit (self) outputs;
       system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
     in
     {
       nixosConfigurations = {
@@ -68,7 +69,7 @@
             ./modules
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
+              home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.sai = import ./home-manager/home.nix;
@@ -79,12 +80,12 @@
 
       homeConfigurations = {
         "sai@Ghylak" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = pkgs;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home-manager/home.nix ];
         };
         "sai@Murgo" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = pkgs;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home-manager/home.nix ];
         };

@@ -19,8 +19,8 @@ in
       "....." = "cd ../../../..";
       ls = "eza --icons";
 
-      nrs = "sudo nixos-rebuild switch --flake '${dir}/.flake/'";
       ngc = "sudo nix-collect-garbage --delete-old";
+      search = "nix search nixpkgs";
 
       g = "git";
       ga = "git add";
