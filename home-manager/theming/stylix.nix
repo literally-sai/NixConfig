@@ -10,7 +10,6 @@
 
   stylix = {
 
-    # Base theme colors
     base16Scheme = {
       base00 = "1d1a2f"; # Background
       base01 = "2a2740"; # Lighter background
@@ -30,7 +29,6 @@
       base0F = "aa55ff"; # Purple
     };
 
-    # Font configuration
     fonts = {
       serif = {
         package = pkgs.noto-fonts;
@@ -56,17 +54,14 @@
       };
     };
 
-    # Cursor theme
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
-      size = 24;
+      size = 16;
     };
 
-    # Polarity (light or dark theme)
     polarity = "dark";
 
-    # Auto-generate themes for supported applications
     autoEnable = true;
   };
 }
