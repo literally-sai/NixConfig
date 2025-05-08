@@ -1,25 +1,26 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
+
 {
   services.displayManager = {
+    defaultSession = "hyprland";
+    autoLogin = {
+      enable = true;
+      user = "sai";
+    };
     sddm = {
       enable = true;
       wayland.enable = true;
-      theme = "catppuccin-mocha";
+      theme = "cattppuccin-mocha";
       package = pkgs.kdePackages.sddm;
     };
-    defaultSession = "hyprland";
   };
 
-  environment.systemPackages = [
-    (pkgs.catppuccin-sddm.override {
+  environment.systemPackages = with pkgs; [
+    (catppuccin-sddm.override {
       flavor = "mocha";
       font = "Noto Sans";
       fontSize = "9";
-      background = ../resources/wallpaper.jpeg;
-      loginBackground = true;
+      loginBackground = false; # Disable heavy background
     })
   ];
 }

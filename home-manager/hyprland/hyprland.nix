@@ -18,6 +18,7 @@
         "swww init && swww img ${config.home.homeDirectory}/.flake/resources/wallpaper.jpeg"
         "hypridle"
         "hyprpanel"
+        "hyprctl setcursor Dracula-cursors 24"
       ];
 
       general = {

@@ -55,13 +55,11 @@
     };
 
     cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 16;
+      name = "capitaine-cursors-white";
+      package = pkgs.capitaine-cursors;
+      size = 12;
     };
 
     polarity = "dark";
-
-    autoEnable = true;
   };
 }

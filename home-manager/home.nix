@@ -6,11 +6,9 @@
 {
   imports = [
     ./hyprland
-    ./editors
     ./shell
     ./theming
     ./terminal
-    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   nixpkgs = {
@@ -36,14 +34,17 @@
       zip
       yazi
       fastfetch
+      ripgrep
 
       # dev
+      inputs.psilovim.packages.${pkgs.system}.default
       gcc
       rustup
       go
-      nodejs_23
       golangci-lint
       black
+      gleam
+      erlang
       hclfmt
       markdownlint-cli
       rusty-man
@@ -53,6 +54,7 @@
       stylua
       yamlfmt
       premake5
+      protobuf
 
       # editors
       vscode
@@ -126,7 +128,12 @@
       home-manager
     ];
   };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+package = inputs.psilovim.packages.${pkgs.system}.default;
 
+};
   qt.enable = true;
   qt.platformTheme.name = "gtk";
   qt.style.name = "adwaita-dark";

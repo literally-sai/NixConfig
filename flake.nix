@@ -10,8 +10,8 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    psilovim = {
+      url = "github:literally-sai/Psilovim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay = {
@@ -32,7 +32,7 @@
       nixpkgs,
       home-manager,
       stylix,
-      nixvim,
+      psilovim,
       rust-overlay,
       hyprpanel,
       hyprland,
