@@ -99,6 +99,7 @@
     networkmanager
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
+    inputs.psilovim.packages.${pkgs.system}.default
   ];
 
   networking.networkmanager.enable = true;

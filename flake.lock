@@ -909,11 +909,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1746742314,
-        "narHash": "sha256-Kfpdw2usvAUKWRQHDr1n7b0G0VEOiWPSb48zBTI3pq0=",
+        "lastModified": 1746744650,
+        "narHash": "sha256-PGMc3PqQ9qxK5fRn7CR/sJ67Ucjq6tyKCvVQaDSFQwc=",
         "owner": "literally-sai",
         "repo": "Psilovim",
-        "rev": "300aa8c60ea861a8492308cfa8b42c5af24551f3",
+        "rev": "1d3861621ce890ace0847c295cfc6a1a979252fa",
         "type": "github"
       },
       "original": {

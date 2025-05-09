@@ -128,12 +128,7 @@
       home-manager
     ];
   };
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-package = inputs.psilovim.packages.${pkgs.system}.default;
 
-};
   qt.enable = true;
   qt.platformTheme.name = "gtk";
   qt.style.name = "adwaita-dark";
